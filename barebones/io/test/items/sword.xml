@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sword class="barebones.world.data.WORootItemBean">
+    <id class="java.lang.String">sword</id>
+    <itemData class="barebones.world.data.WOItemBean">
+        <id class="java.lang.String">sword</id>
+        <baseDescNa class="java.lang.String">dented steel sword</baseDescNa>
+        <baseDesc class="java.lang.String">a dented steel sword</baseDesc>
+        <longDesc class="java.lang.String">This steel sword has some very obvious nicks along the blade. You might want to try to find a better one.</longDesc>
+        <usepts class="java.lang.Integer">0</usepts>
+        <equipped class="java.lang.Boolean">false</equipped>
+        <getpts class="java.lang.Integer">0</getpts>
+    </itemData>
+</sword>

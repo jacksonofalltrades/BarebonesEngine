@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<south class="barebones.world.data.WORegionBean">
+    <id class="java.lang.String">south</id>
+    <rooms class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.WORoomBean" key="1050">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1050</id>
+            <sid class="java.lang.Integer">1060</sid>
+            <wid class="java.lang.Integer">1070</wid>
+            <nid class="java.lang.Integer">1030</nid>
+            <defaultDesc class="java.lang.String">You enter a purple room.</defaultDesc>
+            <roomId class="java.lang.Integer">1050</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">-1</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1070">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1070</id>
+            <sid class="java.lang.Integer">-1</sid>
+            <wid class="java.lang.Integer">-1</wid>
+            <nid class="java.lang.Integer">1040</nid>
+            <defaultDesc class="java.lang.String">You enter an orange room.</defaultDesc>
+            <roomId class="java.lang.Integer">1070</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1050</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1060">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1060</id>
+            <sid class="java.lang.Integer">-1</sid>
+            <wid class="java.lang.Integer">-1</wid>
+            <nid class="java.lang.Integer">1050</nid>
+            <defaultDesc class="java.lang.String">You enter a yellow room.</defaultDesc>
+            <roomId class="java.lang.Integer">1060</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">-1</eid>
+        </map-item-val>
+    </rooms>
+</south>

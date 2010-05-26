@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<shield class="barebones.world.data.WORootItemBean">
+    <id class="java.lang.String">shield</id>
+    <itemData class="barebones.world.data.WOItemBean">
+        <id class="java.lang.String">shield</id>
+        <baseDescNa class="java.lang.String">tarnished bronze shield</baseDescNa>
+        <baseDesc class="java.lang.String">a tarnished bronze shield</baseDesc>
+        <longDesc class="java.lang.String">This shield needs a good polishing, but it's still quite sturdy.</longDesc>
+        <usepts class="java.lang.Integer">0</usepts>
+        <equipped class="java.lang.Boolean">false</equipped>
+        <getpts class="java.lang.Integer">0</getpts>
+    </itemData>
+</shield>

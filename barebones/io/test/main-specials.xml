@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<main-specials class="barebones.world.data.WORoomSpecialMapBean">
+    <id class="java.lang.String">main-specials</id>
+    <roomSpecialMap class="java.util.HashMap">
+        <map-item-val class="java.util.Vector" key="1001">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door2</id>
+                <dir class="java.lang.String">E</dir>
+                <state class="java.lang.Boolean">false</state>
+            </vector-item-val>
+        </map-item-val>
+        <map-item-val class="java.util.Vector" key="1002">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door3</id>
+                <dir class="java.lang.String">S</dir>
+                <state class="java.lang.Boolean">false</state>
+            </vector-item-val>
+            <vector-item-val class="barebones.world.data.WODoorLockBean">
+                <id class="java.lang.String">lock3</id>
+                <dir class="java.lang.String">S</dir>
+                <state class="java.lang.Boolean">false</state>
+                <itemId class="java.lang.String">silverkey</itemId>
+            </vector-item-val>
+        </map-item-val>
+        <map-item-val class="java.util.Vector" key="1010">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door1</id>
+                <dir class="java.lang.String">N</dir>
+                <state class="java.lang.Boolean">true</state>
+            </vector-item-val>
+        </map-item-val>
+    </roomSpecialMap>
+</main-specials>

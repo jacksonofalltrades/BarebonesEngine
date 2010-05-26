@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<room2reg class="barebones.world.data.WORegionMapBean">
+    <roomToRegionMap class="java.util.HashMap">
+        <map-item-val class="java.lang.String" key="1050">south</map-item-val>
+        <map-item-val class="java.lang.String" key="1020">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1030">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1001">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1040">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1002">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1070">south</map-item-val>
+        <map-item-val class="java.lang.String" key="1010">main</map-item-val>
+        <map-item-val class="java.lang.String" key="1060">south</map-item-val>
+    </roomToRegionMap>
+</room2reg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<silverkey class="barebones.world.data.WORootItemBean">
+    <id class="java.lang.String">silverkey</id>
+    <itemData class="barebones.world.data.WOItemBean">
+        <id class="java.lang.String">silverkey</id>
+        <baseDescNa class="java.lang.String">silver key</baseDescNa>
+        <baseDesc class="java.lang.String">a silver key</baseDesc>
+        <longDesc class="java.lang.String">This silver key is very simple, with a cloverleaf at the end.</longDesc>
+        <usepts class="java.lang.Integer">0</usepts>
+        <equipped class="java.lang.Boolean">false</equipped>
+        <getpts class="java.lang.Integer">0</getpts>
+    </itemData>
+</silverkey>

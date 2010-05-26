@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<lock3 class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">lock3</id>
+    <cmdKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="UNLK">
+            <text class="java.lang.String">You shove the key in the lock and it clicks open.</text>
+        </map-item-val>
+    </cmdKeyMap>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.lockedtxt">
+            <text class="java.lang.String">The door is locked, fool!</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.alreadyopen">
+            <text class="java.lang.String">The door %s is already unlocked.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.badkey">
+            <text class="java.lang.String">%s is not even close to the key for the door.</text>
+        </map-item-val>
+    </objKeyMap>
+</lock3>

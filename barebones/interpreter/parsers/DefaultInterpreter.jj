@@ -1,0 +1,319 @@
+/**
+ * JavaCC file
+ */
+ 
+options {
+  JDK_VERSION = "1.6";
+}
+PARSER_BEGIN(DefaultInterpreter)
+package barebones.interpreter.parsers;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+import barebones.concept.Concept;
+import barebones.concept.DirectionConcept;
+import barebones.concept.IdentifierConcept;
+import barebones.concept.ItemConcept;
+import barebones.concept.FeatureConcept;
+import barebones.concept.AmbiguousConcept;
+
+import barebones.event.UserCommand;
+import barebones.event.GetInventoryCommand;
+import barebones.event.MoveCommand;
+import barebones.event.GetTimeCommand;
+import barebones.event.QuitCommand;
+import barebones.event.SaveCommand;
+import barebones.event.RestoreCommand;
+import barebones.event.DropCommand;
+import barebones.event.OpenCommand;
+import barebones.event.TakeCommand;
+import barebones.event.ExamineCommand;
+
+public class DefaultInterpreter {
+  public static void main(String args[]) throws ParseException {
+    DefaultInterpreter parser = null;
+    while (true) {
+      System.out.println("Reading from standard input...");
+      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String input = "";
+		try {
+			input = reader.readLine();
+		}
+		catch(IOException ioe) {
+			System.out.println("Could not read input");
+		}
+		ByteArrayInputStream bastream = new ByteArrayInputStream(input.getBytes());
+
+		if (null == parser)
+		    parser = new DefaultInterpreter(bastream);
+		else
+			parser.ReInit(bastream);
+  
+      try {
+        UserCommand cmd = parser.interpret();
+        System.out.println(cmd.toString());
+      } catch (Exception e) {
+        System.out.println("NOK.");
+        System.out.println(e.getMessage());
+        DefaultInterpreter.ReInit(System.in);
+      } catch (Error e) {
+        System.out.println("Oops.");
+        System.out.println(e.getMessage());
+        break;
+      }
+    }
+  }
+}
+PARSER_END(DefaultInterpreter)
+
+SKIP :
+{
+ 	" "
+|	"\r"
+|	"\t"
+|	"\n"
+}
+
+TOKEN : /* commands */
+{
+  < MOVE_CMD: "go" >
+| < INV_CMD: "i"("n"("v"("e"("n"("t"("o"("r"("y")?)?)?)?)?)?)?)? >
+| < TIME_CMD: "ti"("m"("e")?)? >
+| < QUIT_CMD: "q"("u"("i"("t")?)?)? >
+| < SAVE_CMD: "sa"("v"("e")?)? >
+| < REST_CMD: "r"("e"("s"("t"("o"("r"("e")?)?)?)?)?)?|"l"("o"("a"("d")?)?)? >
+| < DROP_CMD: "dr"("o"("p")?)? >
+| < OPEN_CMD: "o"("p"("e"("n")?)?)? >
+| < TAKE_CMD: "ta"("k"("e")?)? >
+| < EXAM_CMD: "ex"("a"("m"("i"("n"("e")?)?)?)?)? >}
+
+TOKEN : /* targets */
+{ 	< NDIR: "n"("o"("r"("t"("h")?)?)?)? >
+| 	< SDIR: "s"("o"("u"("t"("h")?)?)?)? >
+| 	< EDIR: "e"("a"("s"("t")?)?)? >
+| 	< WDIR: "w"("e"("s"("t")?)?)? >
+| 	< UDIR: "u"("p")? >
+| 	< DDIR: "d"("o"("w"("n")?)?)? >
+| 	< ITEM_WORD: ["a"-"z","A"-"Z"](["a"-"z","A"-"Z"])+ >
+|  	< ID_CONCEPT: ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","0"-"9","_"])+ >
+}
+
+TOKEN : /* OPERATORS */
+{
+	< PLUS: "+" >
+|	< MINUS: "-" >
+|	< MULTIPLY: "*" >
+|	< DIVIDE: "/" >
+}
+TOKEN :
+{
+    < CONSTANT: ( <DIGIT> )+ >
+|   < #DIGIT: ["0" - "9"] >
+}
+
+UserCommand interpret() :
+{
+  	Concept c;
+	DirectionConcept mvDir;
+	IdentifierConcept id;
+	ItemConcept item;
+	AmbiguousConcept ac;
+}{
+  mvDir=move()  {    return new MoveCommand(mvDir);
+  }
+| inventory()
+  {  	return new GetInventoryCommand();
+  }
+| time()
+  {
+    return new GetTimeCommand();  }
+| quit()
+  {
+    return new QuitCommand();  }
+| id=save()
+  {
+    return new SaveCommand(id);  }
+| id=restore()
+  {  	return new RestoreCommand(id);
+  }
+| item=drop()
+  {
+    return new DropCommand(item);  }
+| c=open()
+  {
+    if (ItemConcept.class.isInstance(c)) return new OpenCommand((ItemConcept)c);
+    else return new OpenCommand((DirectionConcept)c);  }
+| item=take()
+  { 	return new TakeCommand(item); 
+  }
+| ac=examine()
+  {
+    if (null == ac) return new ExamineCommand();	else return new ExamineCommand(ac);
+  }
+}
+
+DirectionConcept dir() :{}
+{	< NDIR > { return DirectionConcept.N; }
+| < SDIR > { return DirectionConcept.S; }| < EDIR > { return DirectionConcept.E; }| < WDIR > { return DirectionConcept.W; }
+| < UDIR > { return DirectionConcept.U; }
+| < DDIR > { return DirectionConcept.D; }
+}
+
+String dirText() :
+{
+  Token t;}
+{
+  t=< NDIR > { return t.image; }
+| t=< SDIR > { return t.image; }
+| t=< EDIR > { return t.image; }
+| t=< WDIR > { return t.image; }
+| t=< UDIR > { return t.image; }
+| t=< DDIR > { return t.image; }
+}
+
+IdentifierConcept id() :
+{
+  Token t;
+  String dir;
+}
+{
+  t=< ID_CONCEPT > { return new IdentifierConcept(t.image); }
+| t=< ITEM_WORD > { return new IdentifierConcept(t.image); }
+| dir=dirText() { return new IdentifierConcept(dir); }
+}
+
+String itemText() :
+{
+  Token t;
+  String text;}
+{
+  t=< ITEM_WORD > { return t.image; }
+| text=dirText() { return text; }
+}
+
+ItemConcept item() :
+{
+  StringBuffer termimage = new StringBuffer();
+  String s;
+}
+{
+  s=itemText()
+  {
+	termimage.append(s);  }
+  (
+    s=itemText()
+    {
+        termimage.append(" ");		termimage.append(s);
+    }
+  )*
+{
+  return new ItemConcept(termimage.toString());}}
+
+DirectionConcept move() :
+{
+    DirectionConcept mvDir;
+}
+{
+  [< MOVE_CMD >] mvDir=dir()  {
+    return mvDir;  }
+}
+
+void inventory() : {}
+{	< INV_CMD >
+}
+
+void time() : {}
+{	< TIME_CMD >
+}
+
+void quit() : {}{
+	< QUIT_CMD >
+}
+
+IdentifierConcept save() :
+{
+    IdentifierConcept saveId;
+}
+{
+  < SAVE_CMD > saveId=id()  {
+    return saveId;  }}
+
+IdentifierConcept restore() :
+{	IdentifierConcept restId;
+}
+{
+  < REST_CMD > restId=id()
+  {	return restId;
+  }}
+
+ItemConcept drop() :
+{
+  ItemConcept item;}
+{
+  < DROP_CMD > item=item()  {    return item;
+  }}
+
+Concept open() :
+{
+  DirectionConcept dir;
+  ItemConcept item;}
+{  < OPEN_CMD >
+  (dir=dir()  {    return dir;
+  }
+| item=item()
+  {
+    return item;  }
+  )
+}
+
+ItemConcept take() :
+{  ItemConcept item;
+}
+{
+  < TAKE_CMD > item=item()
+  {	return item;
+  }}
+
+AmbiguousConcept examine() :
+{
+  ItemConcept item=null;}
+{	< EXAM_CMD >
+	[
+		item=item()
+	]
+	{
+	  if (null == item)
+	  	return null;
+	  else
+	  	return new AmbiguousConcept(item, new FeatureConcept(item.toString()));
+	}
+}
+
+int one_line() : {}
+{
+  sum() ";" { return 0; }
+| ";"	    { return 1; }
+}
+void sum() : {}
+{
+  term() (( <PLUS> | <MINUS> ) term())*
+}
+void term() : {}
+{
+  unary() (( <MULTIPLY> | <DIVIDE> ) unary())*
+}
+void unary() : {}
+{
+  <MINUS> element()
+ | element()
+}
+void element() : {}
+{
+  <CONSTANT>
+| "(" sum() ")"
+}
