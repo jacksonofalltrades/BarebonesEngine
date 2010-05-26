@@ -1,0 +1,6 @@
+BBEODetailFormat
+objkey lock.alreadyopen "The door %s is already unlocked."
+objkey lock.badkey "%s is not the right key for the door %s"
+objkey lock.lockedtxt "You cannot open the door %s. It is locked."
+objkey lock.donthaveitem "You do not have %s."
+objkey lock.unlocktxt "You unlock the door %s with %s."

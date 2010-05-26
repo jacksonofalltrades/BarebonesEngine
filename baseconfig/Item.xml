@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Item class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">Item</id>
+    <cmdKeyMap class="java.util.HashMap"/>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.recipnotpresent">
+            <text class="java.lang.String">%s is not here.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.stillequipped">
+            <text class="java.lang.String">You cannot do that. This item is still equipped.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.drop">
+            <text class="java.lang.String">You drop %s.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.give">
+            <text class="java.lang.String">You give %s to %s.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.cannotfind">
+            <text class="java.lang.String">%s is not here.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.roomdesc">
+            <text class="java.lang.String">There is %s here.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.alreadyhave">
+            <text class="java.lang.String">You already have %s.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.take">
+            <text class="java.lang.String">You take %s.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="item.notowned">
+            <text class="java.lang.String">You do not have %s.</text>
+        </map-item-val>
+    </objKeyMap>
+</Item>

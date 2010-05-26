@@ -1,0 +1,6 @@
+BBEODetailFormat
+objkey room.invaliddirtxt "There is no passage %s"
+objkey room.notvaliddirmsg "%s is not a valid direction"
+objkey room.onepsgmsg "There is a passage %s"
+objkey room.multipsgmsg "There are passages %s"
+objkey room.movetxt "You amble %s."

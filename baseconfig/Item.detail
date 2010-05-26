@@ -1,0 +1,9 @@
+BBEODetailFormat
+objkey item.stillequipped "You cannot do that. This item is still equipped."
+objkey item.notowned "You do not have %s."
+objkey item.recipnotpresent "%s is not here."
+objkey item.cannotfind "%s is not here."
+objkey item.drop "You drop %s."
+objkey item.give "You give %s to %s."
+objkey item.take "You take %s."
+objkey item.roomdesc "There is %s here."

@@ -1,0 +1,7 @@
+BBEODetailFormat
+objkey door.closedtxt "The door %s is closed. You cannot go that way."
+objkey door.desctxt "There is %s door %s."
+objkey door.opentxt "You open the door %s."
+objkey door.alreadyopen "The door %s is already opened."
+objkey door.openadj "an open"
+objkey door.closedadj "a closed"
