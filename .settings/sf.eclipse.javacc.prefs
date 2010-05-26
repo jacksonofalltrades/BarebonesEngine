@@ -1,0 +1,9 @@
+#Thu Dec 24 19:05:56 PST 2009
+CLEAR_CONSOLE=false
+JJ_NATURE=true
+JTB_OPTIONS=-p\=barebones.interpreter.parsers
+RUNTIME_JJJAR=/home/dej/.eclipse/org.eclipse.platform_3.5.0_155965261/plugins/sf.eclipse.javacc_1.5.17/javacc.jar
+RUNTIME_JTBJAR=/home/dej/.eclipse/org.eclipse.platform_3.5.0_155965261/plugins/sf.eclipse.javacc_1.5.17/jtb-1.4.0.jar
+SHOW_CONSOLE=true
+SUPPRESS_WARNINGS=true
+eclipse.preferences.version=1
