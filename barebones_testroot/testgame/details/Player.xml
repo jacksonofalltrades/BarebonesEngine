@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Player class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">Player</id>
+    <cmdKeyMap class="java.util.HashMap"/>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="player.invheadertxt">
+            <text class="java.lang.String">You are carrying the following items:</text>
+        </map-item-val>
+    </objKeyMap>
+</Player>

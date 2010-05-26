@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<main-features class="barebones.world.data.WORoomFeatureMapBean">
+    <id class="java.lang.String">main-specials</id>
+    <roomFeatureMap class="java.util.HashMap">
+        <map-item-val class="java.util.Vector" key="1001">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door2</id>
+                <dir class="java.lang.String">E</dir>
+                <state class="java.lang.Boolean">false</state>
+            </vector-item-val>
+        </map-item-val>
+        <map-item-val class="java.util.Vector" key="1002">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door3</id>
+                <dir class="java.lang.String">S</dir>
+                <state class="java.lang.Boolean">false</state>
+            </vector-item-val>
+            <vector-item-val class="barebones.world.data.WODoorLockBean">
+                <id class="java.lang.String">lock3</id>
+                <dir class="java.lang.String">S</dir>
+                <state class="java.lang.Boolean">false</state>
+                <itemId class="java.lang.String">silverkey</itemId>
+            </vector-item-val>
+        </map-item-val>
+        <map-item-val class="java.util.Vector" key="1010">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door1</id>
+                <dir class="java.lang.String">N</dir>
+                <state class="java.lang.Boolean">true</state>
+            </vector-item-val>
+        </map-item-val>
+        <map-item-val class="java.util.Vector" key="1030">
+            <vector-item-val class="barebones.world.data.WODoorBean">
+                <id class="java.lang.String">door4</id>
+                <dir class="java.lang.String">E</dir>
+                <state class="java.lang.Boolean">false</state>
+            </vector-item-val>
+            <vector-item-val class="barebones.world.data.WOSecretDoorBean">
+            	<id class="java.lang.String">secretdoor1</id>
+            	<dir class="java.lang.String">E</dir>
+            	<state class="java.lang.Boolean">false</state>
+            	<triggerList class="java.util.Vector">
+            		<vector-item-val class="barebones.world.data.CommandTrigger">
+            			<commandId class="java.lang.String">EXAM</commandId>
+            			<target class="java.lang.String">dog</target>
+            		</vector-item-val>
+            		<vector-item-val class="barebones.world.data.CommandTrigger">
+            			<commandId class="java.lang.String">EXAM</commandId>
+            			<target class="java.lang.String">carpet</target>
+            		</vector-item-val>
+            		<vector-item-val class="barebones.world.data.CommandTrigger">
+            			<commandId class="java.lang.String">PULL</commandId>
+            			<target class="java.lang.String">tail</target>
+            		</vector-item-val>
+            	</triggerList>
+            </vector-item-val>
+        </map-item-val>
+    </roomFeatureMap>
+</main-features>

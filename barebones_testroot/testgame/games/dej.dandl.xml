@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<dej class="barebones.world.data.PlayerStateBean">
+    <id class="java.lang.String">dej</id>
+    <worldDeltas class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.WODoorLockBean" key="lock3">
+            <id class="java.lang.String">lock3</id>
+            <state class="java.lang.Boolean">true</state>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WODoorBean" key="door3">
+            <id class="java.lang.String">door3</id>
+            <state class="java.lang.Boolean">true</state>
+        </map-item-val>
+    </worldDeltas>
+    <data class="barebones.world.data.PlayerStateData">
+        <currScore class="java.lang.Integer">100</currScore>
+        <inventory class="java.util.HashSet">
+            <set-item-val class="java.lang.String">silverkey</set-item-val>
+            <set-item-val class="java.lang.String">shield</set-item-val>
+            <set-item-val class="java.lang.String">sword</set-item-val>
+        </inventory>
+        <currTicks class="java.lang.Long">10</currTicks>
+        <currRoomId class="java.lang.Integer">1002</currRoomId>
+    </data>
+</dej>

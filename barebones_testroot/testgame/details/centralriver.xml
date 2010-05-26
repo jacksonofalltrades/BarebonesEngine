@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<stoneroom class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">centralriver</id>
+    <cmdKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="EXAM">
+            <text class="java.lang.String">The central river separates the Eastern and Western Kingdoms.</text>
+        </map-item-val>
+    </cmdKeyMap>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap"/>
+</stoneroom>

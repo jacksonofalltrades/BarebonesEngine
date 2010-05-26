@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test class="barebones.world.data.PlayerStateBean">
+    <id class="java.lang.String">test</id>
+    <worldDeltas class="java.util.HashMap"/>
+    <data class="barebones.world.data.PlayerStateData">
+        <currScore class="java.lang.Integer">5</currScore>
+        <inventory class="java.util.HashSet">
+            <set-item-val class="java.lang.String">goldkey</set-item-val>
+            <set-item-val class="java.lang.String">shield</set-item-val>
+            <set-item-val class="java.lang.String">sword</set-item-val>
+        </inventory>
+        <currTicks class="java.lang.Long">0</currTicks>
+        <currRoomId class="java.lang.Integer">1010</currRoomId>
+    </data>
+</test>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<box class="barebones.world.data.WORootItemBean">
+    <id class="java.lang.String">box</id>
+    <itemData class="barebones.world.data.WOItemBean">
+        <id class="java.lang.String">box</id>
+        <baseDescNa class="java.lang.String">wooden box</baseDescNa>
+        <baseDesc class="java.lang.String">a wooden box</baseDesc>
+        <longDesc class="java.lang.String">This wooden box has ashen carvings in a strange language and a bronze latch. There is a keyhole below the latch.</longDesc>
+        <usepts class="java.lang.Integer">0</usepts>
+        <equipped class="java.lang.Boolean">false</equipped>
+        <getpts class="java.lang.Integer">0</getpts>
+    </itemData>
+    <containedItemSet class="java.util.HashSet">
+        <set-item-val class="java.lang.String">silverkey</set-item-val>
+    </containedItemSet>
+</box>

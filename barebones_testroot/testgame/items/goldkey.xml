@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<goldkey class="barebones.world.data.WORootItemBean">
+    <id class="java.lang.String">goldkey</id>
+    <itemData class="barebones.world.data.WOItemBean">
+        <id class="java.lang.String">goldkey</id>
+        <baseDescNa class="java.lang.String">golden key</baseDescNa>
+        <baseDesc class="java.lang.String">a golden key</baseDesc>
+        <longDesc class="java.lang.String">This ornate golden key is heavy and very probably solid gold. It has the King's crest on it.</longDesc>
+        <usepts class="java.lang.Integer">0</usepts>
+        <equipped class="java.lang.Boolean">false</equipped>
+        <getpts class="java.lang.Integer">0</getpts>
+    </itemData>
+</goldkey>

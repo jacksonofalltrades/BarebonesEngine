@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<room1002 class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">room1002</id>
+    <cmdKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="MOVE">
+            <text class="java.lang.String">You slowly glide %s.</text>
+        </map-item-val>
+    </cmdKeyMap>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap"/>
+</room1002>

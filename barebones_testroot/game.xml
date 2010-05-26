@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<game class="barebones.world.data.GameConfigDataBean">
+    <secondsPerTick class="java.lang.Long">600</secondsPerTick>
+    <id class="java.lang.String">game</id>
+    <startingRoomId class="java.lang.Integer">1010</startingRoomId>
+    <hoursPerDay class="java.lang.Integer">30</hoursPerDay>
+    <timeText class="java.lang.String"> have passed since you began your quest.</timeText>
+    <subcmdOnlyText class="java.lang.String">You cannot %s right now.</subcmdOnlyText>
+    <quitText class="java.lang.String">You exit the game.</quitText>
+    <saveText class="java.lang.String">You save your progress with the label [%s].</saveText>
+</game>

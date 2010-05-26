@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DoorLock class="barebones.world.data.ObjectDetailBean">
+    <id class="java.lang.String">DoorLock</id>
+    <cmdKeyMap class="java.util.HashMap"/>
+    <containedItemSet class="java.util.HashSet"/>
+    <objKeyMap class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.lockedtxt">
+            <text class="java.lang.String">You cannot open the door %s. It is locked.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.unlocktxt">
+            <text class="java.lang.String">You unlock the door %s with %s.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.alreadyopen">
+            <text class="java.lang.String">The door %s is already unlocked.</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.badkey">
+            <text class="java.lang.String">%s is not the right key for the door %s</text>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.donthaveitem">
+            <text class="java.lang.String">You do not have %s.</text>
+        </map-item-val>
+    </objKeyMap>
+</DoorLock>

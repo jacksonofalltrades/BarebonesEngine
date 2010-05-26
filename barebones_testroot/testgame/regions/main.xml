@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<main class="barebones.world.data.WORegionBean">
+    <id class="java.lang.String">main</id>
+    <rooms class="java.util.HashMap">
+        <map-item-val class="barebones.world.data.WORoomBean" key="1020">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1020</id>
+            <sid class="java.lang.Integer">1030</sid>
+            <wid class="java.lang.Integer">1010</wid>
+            <nid class="java.lang.Integer">-1</nid>
+            <defaultDesc class="java.lang.String">You are in a blue room.</defaultDesc>
+            <roomId class="java.lang.Integer">1020</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">-1</eid>
+            <detailId class="java.lang.String">stoneroom</detailId>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1001">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1001</id>
+            <sid class="java.lang.Integer">1010</sid>
+            <wid class="java.lang.Integer">-1</wid>
+            <nid class="java.lang.Integer">-1</nid>
+            <defaultDesc class="java.lang.String">You are in a pale room.</defaultDesc>
+            <roomId class="java.lang.Integer">1001</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1002</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1030">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1030</id>
+            <sid class="java.lang.Integer">1050</sid>
+            <wid class="java.lang.Integer">1040</wid>
+            <nid class="java.lang.Integer">1020</nid>
+            <defaultDesc class="java.lang.String">You are in a peach room.</defaultDesc>
+            <roomId class="java.lang.Integer">1030</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1100</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1002">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1002</id>
+            <sid class="java.lang.Integer">1020</sid>
+            <wid class="java.lang.Integer">1001</wid>
+            <nid class="java.lang.Integer">-1</nid>
+            <defaultDesc class="java.lang.String">You are in a cherry room.</defaultDesc>
+            <roomId class="java.lang.Integer">1002</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">2000</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1040">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1040</id>
+            <sid class="java.lang.Integer">1070</sid>
+            <wid class="java.lang.Integer">3000</wid>
+            <nid class="java.lang.Integer">1010</nid>
+            <defaultDesc class="java.lang.String">You are in a green room.</defaultDesc>
+            <roomId class="java.lang.Integer">1040</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1030</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1010">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1010</id>
+            <sid class="java.lang.Integer">1040</sid>
+            <wid class="java.lang.Integer">-1</wid>
+            <nid class="java.lang.Integer">1001</nid>
+            <defaultDesc class="java.lang.String">You are in a grey room.</defaultDesc>
+            <roomId class="java.lang.Integer">1010</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1020</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="1100">
+            <uid class="java.lang.Integer">-1</uid>
+            <id class="java.lang.String">room1100</id>
+            <sid class="java.lang.Integer">1120</sid>
+            <wid class="java.lang.Integer">1030</wid>
+            <nid class="java.lang.Integer">-1</nid>
+            <roomId class="java.lang.Integer">1100</roomId>
+            <did class="java.lang.Integer">-1</did>
+            <eid class="java.lang.Integer">1101</eid>
+        </map-item-val>
+        <map-item-val class="barebones.world.data.WORoomBean" key="3000">
+            <id class="java.lang.String">room3000</id>
+            <roomId class="java.lang.Integer">3000</roomId>
+            <eid class="java.lang.Integer">1040</eid>
+            <uid class="java.lang.Integer">null</uid>
+            <sid class="java.lang.Integer">null</sid>
+            <wid class="java.lang.Integer">null</wid>
+            <nid class="java.lang.Integer">null</nid>
+            <did class="java.lang.Integer">null</did>
+        </map-item-val>
+    </rooms>
+    <roomBlocks class="java.util.Vector">
+        <vector-item-val class="barebones.world.data.WORoomBlockBean">
+            <id class="java.lang.String">1100</id>
+            <startIndex class="java.lang.Integer">1100</startIndex>
+            <height class="java.lang.Integer">20</height>
+            <possibleDescs class="java.util.Vector">
+                <vector-item-val class="java.lang.String">You are on a verdant hill</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in a muddy pasture</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in a grassy field</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in a lightly forested grove of pine trees</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in a green field with a small stream running through it</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in a slightly scorched meadow</vector-item-val>
+            </possibleDescs>
+            <width class="java.lang.Integer">20</width>
+            <descSeed class="java.lang.Integer">123</descSeed>
+            <step class="java.lang.Integer">1</step>
+            <detailId class="java.lang.String">meadows</detailId>
+        </vector-item-val>
+        <vector-item-val class="barebones.world.data.WORoomBlockBean">
+            <id class="java.lang.String">2000</id>
+            <startIndex class="java.lang.Integer">2000</startIndex>
+            <height class="java.lang.Integer">4</height>
+            <possibleDescs class="java.util.Vector">
+                <vector-item-val class="java.lang.String">You are near a rocky cliff</vector-item-val>
+                <vector-item-val class="java.lang.String">You are on a wasted plateau</vector-item-val>
+                <vector-item-val class="java.lang.String">You are surrounded by rocky scrub</vector-item-val>
+                <vector-item-val class="java.lang.String">There is a dank, deep, mossy well here</vector-item-val>
+                <vector-item-val class="java.lang.String">You are on a brick-paved ruin of a town</vector-item-val>
+                <vector-item-val class="java.lang.String">You are in the ruins of an old mill</vector-item-val>
+            </possibleDescs>
+            <width class="java.lang.Integer">10</width>
+            <descSeed class="java.lang.Integer">237</descSeed>
+            <step class="java.lang.Integer">1</step>
+            <detailId class="java.lang.String">crags</detailId>
+        </vector-item-val>
+        <vector-item-val class="barebones.world.data.WORoomBlockBean">
+            <id class="java.lang.String">3000</id>
+            <startIndex class="java.lang.Integer">3000</startIndex>
+            <height class="java.lang.Integer">20</height>
+            <possibleDescs class="java.util.Vector">
+                <vector-item-val class="java.lang.String">You are by the shore. The central river flows quickly by you</vector-item-val>
+                <vector-item-val class="java.lang.String">You are by the shore. The central river flows peacefully by you</vector-item-val>
+                <vector-item-val class="java.lang.String">You are by the shore. The central river carries dead things on it</vector-item-val>
+                <vector-item-val class="java.lang.String">You are by the shore. The central river seems clear now</vector-item-val>
+                <vector-item-val class="java.lang.String">You are by the shore. The central river is looking dirtier here</vector-item-val>
+                <vector-item-val class="java.lang.String">You are by the shore. The central river rushes by you</vector-item-val>
+            </possibleDescs>
+            <width class="java.lang.Integer">1</width>
+            <descSeed class="java.lang.Integer">397</descSeed>
+            <step class="java.lang.Integer">1</step>
+            <detailId class="java.lang.String">centralriver</detailId>
+        </vector-item-val>
+    </roomBlocks>    
+</main>
