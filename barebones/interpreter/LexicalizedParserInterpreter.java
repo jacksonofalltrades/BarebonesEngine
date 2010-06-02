@@ -67,7 +67,7 @@ public class LexicalizedParserInterpreter
 			}
 		}
 		
-		throw new UnidentifiedCommandException();
+		throw new UnidentifiedCommandException("");
 	}
 	
 	protected Pattern getPattern(String patStr) {

@@ -20,17 +20,14 @@ public class InterpretDelayedCommand extends UserCommandImpl
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 
 	public boolean causesTick() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public String id() {
-		// TODO Auto-generated method stub
 		return InterpretDelayedCommand.id;
 	}
 

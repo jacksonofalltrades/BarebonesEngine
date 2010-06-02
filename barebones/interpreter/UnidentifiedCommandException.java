@@ -2,6 +2,11 @@ package barebones.interpreter;
 
 public class UnidentifiedCommandException extends RuntimeException {
 
+	public UnidentifiedCommandException(String msg) 
+	{
+		super(msg);
+	}
+
 	/**
 	 * 
 	 */

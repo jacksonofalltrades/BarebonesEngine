@@ -34,7 +34,7 @@ public class OpenCommand extends UserCommandImpl {
 		addSlotConcepts(makeSlot(OPEN_TARGET, itemConcept));
 		m_target = itemConcept.toString();
 	}
-
+	
 	public boolean causesTick() {
 		return true;
 	}

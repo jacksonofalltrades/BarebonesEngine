@@ -48,17 +48,19 @@ public interface DefaultInterpreterConstants {
   /** RegularExpression Id. */
   int ID_CONCEPT = 22;
   /** RegularExpression Id. */
-  int PLUS = 23;
+  int DOOR_TO_THE = 23;
   /** RegularExpression Id. */
-  int MINUS = 24;
+  int PLUS = 24;
   /** RegularExpression Id. */
-  int MULTIPLY = 25;
+  int MINUS = 25;
   /** RegularExpression Id. */
-  int DIVIDE = 26;
+  int MULTIPLY = 26;
   /** RegularExpression Id. */
-  int CONSTANT = 27;
+  int DIVIDE = 27;
   /** RegularExpression Id. */
-  int DIGIT = 28;
+  int CONSTANT = 28;
+  /** RegularExpression Id. */
+  int DIGIT = 29;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -88,6 +90,7 @@ public interface DefaultInterpreterConstants {
     "<DDIR>",
     "<ITEM_WORD>",
     "<ID_CONCEPT>",
+    "\"door to the\"",
     "\"+\"",
     "\"-\"",
     "\"*\"",

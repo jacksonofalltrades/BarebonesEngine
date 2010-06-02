@@ -15,6 +15,7 @@ import barebones.event.SaveCommand;
 import barebones.event.Subcommand;
 import barebones.event.UserCommand;
 import barebones.event.YesNoSubcommand;
+import barebones.interpreter.ConceptParserInterpreter;
 import barebones.interpreter.LexicalizedParserInterpreter;
 import barebones.interpreter.UnidentifiedCommandException;
 import barebones.io.ResponseContent;
@@ -43,7 +44,7 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 	protected RoomManager m_roomManager;
 	protected ItemManager m_itemManager;
 	protected SubcommandContext m_subcommandContext;
-	protected LexicalizedParserInterpreter m_commandInterpreter;
+	protected ConceptParserInterpreter m_commandInterpreter;
 			
 	public GameEngine(String gameDataRootPath, String gameId, User user)
 	{
@@ -60,7 +61,7 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 		
 		m_subcommandContext = null;
 		
-		m_commandInterpreter = new LexicalizedParserInterpreter(this);
+		m_commandInterpreter = new ConceptParserInterpreter(this);
 	}
 	
 	public String getGameDataRootPath()
@@ -202,7 +203,8 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 		}
 		else if (UserCommand.class.isInstance(event))
 		{
-			UserCommand cmd = (UserCommand)event;
+			UserCommand tempCmd = (UserCommand)event;
+			UserCommand cmd = tempCmd;
 			
 			// Check to see if the command is a InterpretDelayedCommand
 			if (InterpretDelayedCommand.id == cmd.id()) {
@@ -216,7 +218,9 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 					return;
 				}
 			}
-						
+			
+			System.out.println(cmd.toString());
+			
 			// Handle all other game-level commands here
 			if (cmd.id().equals(GetTimeCommand.id))
 			{
@@ -237,6 +241,9 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 				shutdown();
 				
 				cmd.addResponse(ResponseContent.text(m_gameConfig.getQuitText()));
+				if (tempCmd != cmd) {
+					tempCmd.addResponse(cmd.getResponse());
+				}
 				return;
 			}
 			else if (cmd.id().equals(SaveCommand.id)) {
@@ -324,7 +331,10 @@ public class GameEngine implements GameEventListener, GameEngineAccessor
 				if (cmd.isSuccessful() && cmd.causesTick()) {
 					m_clock.tick();
 				}
-			}	
+			}
+			if (tempCmd != cmd) {
+				tempCmd.addResponse(cmd.getResponse());
+			}
 		}
 	}
 }

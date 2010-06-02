@@ -14,6 +14,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+import java.util.HashMap;
+
 import barebones.concept.Concept;
 import barebones.concept.DirectionConcept;
 import barebones.concept.IdentifierConcept;
@@ -103,6 +105,10 @@ TOKEN : /* targets */
 |  	< ID_CONCEPT: ["a"-"z","A"-"Z"](["a"-"z","A"-"Z","0"-"9","_"])+ >
 }
 
+TOKEN : /* GRAMMAR */
+{  < DOOR_TO_THE: "door to the" >
+}
+
 TOKEN : /* OPERATORS */
 {
 	< PLUS: "+" >
@@ -124,6 +130,7 @@ UserCommand interpret() :
 	ItemConcept item;
 	AmbiguousConcept ac;
 }{
+  LOOKAHEAD(2)
   mvDir=move()  {    return new MoveCommand(mvDir);
   }
 | inventory()
@@ -214,6 +221,19 @@ ItemConcept item() :
 {
   return new ItemConcept(termimage.toString());}}
 
+Concept dirOrItem() :
+{
+  DirectionConcept dir;
+  ItemConcept item;}
+{
+  LOOKAHEAD(2)
+  dir=dir()  {    return dir;
+  }
+|
+  item=item()
+  {	return item;
+  }}
+
 DirectionConcept move() :
 {
     DirectionConcept mvDir;
@@ -258,17 +278,29 @@ ItemConcept drop() :
   < DROP_CMD > item=item()  {    return item;
   }}
 
+Concept open_object() :
+{  Concept c;
+}
+{
+< DOOR_TO_THE > c=dir()
+  {
+    return c;
+  }
+|
+  c=dirOrItem()
+  {
+    return c;
+  }}
+
 Concept open() :
 {
+  Concept c;
   DirectionConcept dir;
   ItemConcept item;}
-{  < OPEN_CMD >
-  (dir=dir()  {    return dir;
+{
+  < OPEN_CMD > c=open_object()
+  {    return c;
   }
-| item=item()
-  {
-    return item;  }
-  )
 }
 
 ItemConcept take() :
