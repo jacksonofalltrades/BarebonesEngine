@@ -32,35 +32,41 @@ public interface DefaultInterpreterConstants {
   /** RegularExpression Id. */
   int EXAM_CMD = 14;
   /** RegularExpression Id. */
-  int NDIR = 15;
+  int PUSH_CMD = 15;
   /** RegularExpression Id. */
-  int SDIR = 16;
+  int PULL_CMD = 16;
   /** RegularExpression Id. */
-  int EDIR = 17;
+  int SAY_CMD = 17;
   /** RegularExpression Id. */
-  int WDIR = 18;
+  int NDIR = 18;
   /** RegularExpression Id. */
-  int UDIR = 19;
+  int SDIR = 19;
   /** RegularExpression Id. */
-  int DDIR = 20;
+  int EDIR = 20;
   /** RegularExpression Id. */
-  int ITEM_WORD = 21;
+  int WDIR = 21;
   /** RegularExpression Id. */
-  int ID_CONCEPT = 22;
+  int UDIR = 22;
   /** RegularExpression Id. */
-  int DOOR_TO_THE = 23;
+  int DDIR = 23;
   /** RegularExpression Id. */
-  int PLUS = 24;
+  int ITEM_WORD = 24;
   /** RegularExpression Id. */
-  int MINUS = 25;
+  int ID_CONCEPT = 25;
   /** RegularExpression Id. */
-  int MULTIPLY = 26;
+  int DOOR_TO_THE = 26;
   /** RegularExpression Id. */
-  int DIVIDE = 27;
+  int PLUS = 27;
   /** RegularExpression Id. */
-  int CONSTANT = 28;
+  int MINUS = 28;
   /** RegularExpression Id. */
-  int DIGIT = 29;
+  int MULTIPLY = 29;
+  /** RegularExpression Id. */
+  int DIVIDE = 30;
+  /** RegularExpression Id. */
+  int CONSTANT = 31;
+  /** RegularExpression Id. */
+  int DIGIT = 32;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -82,6 +88,9 @@ public interface DefaultInterpreterConstants {
     "<OPEN_CMD>",
     "<TAKE_CMD>",
     "<EXAM_CMD>",
+    "<PUSH_CMD>",
+    "<PULL_CMD>",
+    "\"say\"",
     "<NDIR>",
     "<SDIR>",
     "<EDIR>",

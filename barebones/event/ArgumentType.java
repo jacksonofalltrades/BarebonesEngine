@@ -4,5 +4,7 @@ public enum ArgumentType {
 		DIRECTION,
 		ITEM,
 		RECIPIENT,
-		GAMEID
+		GAMEID,
+		FEATURE,
+		STATEMENT
 }

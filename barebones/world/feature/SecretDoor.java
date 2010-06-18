@@ -105,7 +105,7 @@ public class SecretDoor extends WorldObjectImpl implements RoomFeature {
 			}
 		}
 		
-		boolean relevant = (normTarget.equals(this.sdata.dir) || normTarget.isEmpty());
+		boolean relevant = (normTarget.equals(this.sdata.dir) || normTarget.equals(ExamineCommand.DEFAULT_TARGET));
 		if (ExamineCommand.class.isInstance(cmd) && relevant) {
 			if (!this.sdata.state && !triggered) {
 				// Pre-trigger examine

@@ -10,11 +10,6 @@
             <id class="java.lang.String">room1020</id>
             <containedItemSet class="java.util.HashSet"/>
         </map-item-val>
-        <map-item-val class="barebones.world.data.WOSecretDoorBean" key="secretdoor1"/>
-        <map-item-val class="barebones.world.data.WODoorBean" key="door4">
-            <id class="java.lang.String">door4</id>
-            <state class="java.lang.Boolean">true</state>
-        </map-item-val>
     </worldDeltas>
     <data class="barebones.world.data.PlayerStateData">
         <currScore class="java.lang.Integer">0</currScore>
@@ -24,7 +19,7 @@
             <set-item-val class="java.lang.String">shield</set-item-val>
             <set-item-val class="java.lang.String">sword</set-item-val>
         </inventory>
-        <currTicks class="java.lang.Long">195</currTicks>
-        <currRoomId class="java.lang.Integer">1020</currRoomId>
+        <currTicks class="java.lang.Long">196</currTicks>
+        <currRoomId class="java.lang.Integer">1030</currRoomId>
     </data>
 </testuser>

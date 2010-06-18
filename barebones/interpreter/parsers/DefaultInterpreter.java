@@ -14,6 +14,7 @@ import barebones.concept.DirectionConcept;
 import barebones.concept.IdentifierConcept;
 import barebones.concept.ItemConcept;
 import barebones.concept.FeatureConcept;
+import barebones.concept.StatementConcept;
 import barebones.concept.AmbiguousConcept;
 
 import barebones.event.UserCommand;
@@ -27,6 +28,9 @@ import barebones.event.DropCommand;
 import barebones.event.OpenCommand;
 import barebones.event.TakeCommand;
 import barebones.event.ExamineCommand;
+import barebones.event.PushCommand;
+import barebones.event.PullCommand;
+import barebones.event.SayCommand;
 
 @SuppressWarnings("all")
 public class DefaultInterpreter implements DefaultInterpreterConstants {
@@ -71,6 +75,8 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
         IdentifierConcept id;
         ItemConcept item;
         AmbiguousConcept ac;
+        FeatureConcept feature;
+        StatementConcept statement;
     if (jj_2_1(2)) {
       mvDir = move();
     {if (true) return new MoveCommand(mvDir);}
@@ -113,6 +119,18 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
         ac = examine();
     if (null == ac) {if (true) return new ExamineCommand();}
         else {if (true) return new ExamineCommand(ac);}
+        break;
+      case PUSH_CMD:
+        feature = push();
+    {if (true) return new PushCommand(feature);}
+        break;
+      case PULL_CMD:
+        feature = pull();
+    {if (true) return new PullCommand(feature);}
+        break;
+      case SAY_CMD:
+        statement = say();
+    {if (true) return new SayCommand(statement);}
         break;
       default:
         jj_la1[0] = jj_gen;
@@ -221,7 +239,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public String itemText() throws ParseException {
+  static final public String rawText() throws ParseException {
   Token t;
   String text;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -246,10 +264,10 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public ItemConcept item() throws ParseException {
+  static final public String sentence() throws ParseException {
   StringBuffer termimage = new StringBuffer();
   String s;
-    s = itemText();
+    s = rawText();
         termimage.append(s);
     label_1:
     while (true) {
@@ -267,11 +285,18 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
         jj_la1[5] = jj_gen;
         break label_1;
       }
-      s = itemText();
+      s = rawText();
         termimage.append(" ");
                 termimage.append(s);
     }
-  {if (true) return new ItemConcept(termimage.toString());}
+  {if (true) return termimage.toString();}
+    throw new Error("Missing return statement in function");
+  }
+
+  static final public ItemConcept item() throws ParseException {
+  String sentence;
+    sentence = sentence();
+        {if (true) return new ItemConcept(sentence);}
     throw new Error("Missing return statement in function");
   }
 
@@ -397,6 +422,33 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
+  static final public FeatureConcept push() throws ParseException {
+  String sentence;
+  FeatureConcept feature;
+    jj_consume_token(PUSH_CMD);
+    sentence = sentence();
+    {if (true) return new FeatureConcept(sentence);}
+    throw new Error("Missing return statement in function");
+  }
+
+  static final public FeatureConcept pull() throws ParseException {
+  String sentence;
+  FeatureConcept feature;
+    jj_consume_token(PULL_CMD);
+    sentence = sentence();
+    {if (true) return new FeatureConcept(sentence);}
+    throw new Error("Missing return statement in function");
+  }
+
+  static final public StatementConcept say() throws ParseException {
+  String sentence;
+  StatementConcept statement;
+    jj_consume_token(SAY_CMD);
+    sentence = sentence();
+    {if (true) return new StatementConcept(sentence);}
+    throw new Error("Missing return statement in function");
+  }
+
   static final public AmbiguousConcept examine() throws ParseException {
   ItemConcept item=null;
     jj_consume_token(EXAM_CMD);
@@ -425,13 +477,13 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case MINUS:
     case CONSTANT:
-    case 31:
+    case 34:
       sum();
-      jj_consume_token(30);
+      jj_consume_token(33);
               {if (true) return 0;}
       break;
-    case 30:
-      jj_consume_token(30);
+    case 33:
+      jj_consume_token(33);
               {if (true) return 1;}
       break;
     default:
@@ -507,7 +559,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
       element();
       break;
     case CONSTANT:
-    case 31:
+    case 34:
       element();
       break;
     default:
@@ -522,10 +574,10 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     case CONSTANT:
       jj_consume_token(CONSTANT);
       break;
-    case 31:
-      jj_consume_token(31);
+    case 34:
+      jj_consume_token(34);
       sum();
-      jj_consume_token(32);
+      jj_consume_token(35);
       break;
     default:
       jj_la1[16] = jj_gen;
@@ -546,6 +598,24 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     try { return !jj_3_2(); }
     catch(LookaheadSuccess ls) { return true; }
     finally { jj_save(1, xla); }
+  }
+
+  static private boolean jj_3_2() {
+    if (jj_3R_5()) return true;
+    return false;
+  }
+
+  static private boolean jj_3_1() {
+    if (jj_3R_4()) return true;
+    return false;
+  }
+
+  static private boolean jj_3R_4() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_scan_token(5)) jj_scanpos = xsp;
+    if (jj_3R_5()) return true;
+    return false;
   }
 
   static private boolean jj_3R_5() {
@@ -600,24 +670,6 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     return false;
   }
 
-  static private boolean jj_3_2() {
-    if (jj_3R_5()) return true;
-    return false;
-  }
-
-  static private boolean jj_3_1() {
-    if (jj_3R_4()) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_4() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_scan_token(5)) jj_scanpos = xsp;
-    if (jj_3R_5()) return true;
-    return false;
-  }
-
   static private boolean jj_initialized_once = false;
   /** Generated Token Manager. */
   static public DefaultInterpreterTokenManager token_source;
@@ -638,10 +690,10 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x7fc0,0x1f8000,0x1f8000,0x7f8000,0x3f8000,0x3f8000,0x3f8000,0x20,0xbf8000,0x3f8000,0xd2000000,0x3000000,0x3000000,0xc000000,0xc000000,0x92000000,0x90000000,};
+      jj_la1_0 = new int[] {0x3ffc0,0xfc0000,0xfc0000,0x3fc0000,0x1fc0000,0x1fc0000,0x1fc0000,0x20,0x5fc0000,0x1fc0000,0x90000000,0x18000000,0x18000000,0x60000000,0x60000000,0x90000000,0x80000000,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
+      jj_la1_1 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x6,0x0,0x0,0x0,0x0,0x4,0x4,};
    }
   static final private JJCalls[] jj_2_rtns = new JJCalls[2];
   static private boolean jj_rescan = false;
@@ -848,7 +900,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[33];
+    boolean[] la1tokens = new boolean[36];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -865,7 +917,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
         }
       }
     }
-    for (int i = 0; i < 33; i++) {
+    for (int i = 0; i < 36; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

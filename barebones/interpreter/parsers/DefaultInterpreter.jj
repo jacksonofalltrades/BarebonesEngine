@@ -21,6 +21,7 @@ import barebones.concept.DirectionConcept;
 import barebones.concept.IdentifierConcept;
 import barebones.concept.ItemConcept;
 import barebones.concept.FeatureConcept;
+import barebones.concept.StatementConcept;
 import barebones.concept.AmbiguousConcept;
 
 import barebones.event.UserCommand;
@@ -34,6 +35,9 @@ import barebones.event.DropCommand;
 import barebones.event.OpenCommand;
 import barebones.event.TakeCommand;
 import barebones.event.ExamineCommand;
+import barebones.event.PushCommand;
+import barebones.event.PullCommand;
+import barebones.event.SayCommand;
 
 public class DefaultInterpreter {
   public static void main(String args[]) throws ParseException {
@@ -92,7 +96,10 @@ TOKEN : /* commands */
 | < DROP_CMD: "dr"("o"("p")?)? >
 | < OPEN_CMD: "o"("p"("e"("n")?)?)? >
 | < TAKE_CMD: "ta"("k"("e")?)? >
-| < EXAM_CMD: "ex"("a"("m"("i"("n"("e")?)?)?)?)? >}
+| < EXAM_CMD: "ex"("a"("m"("i"("n"("e")?)?)?)?)? >
+| < PUSH_CMD: "pus"("h")? >
+| < PULL_CMD: "pul"("l")? >
+| < SAY_CMD: "say" >}
 
 TOKEN : /* targets */
 { 	< NDIR: "n"("o"("r"("t"("h")?)?)?)? >
@@ -129,6 +136,8 @@ UserCommand interpret() :
 	IdentifierConcept id;
 	ItemConcept item;
 	AmbiguousConcept ac;
+	FeatureConcept feature;
+	StatementConcept statement;
 }{
   LOOKAHEAD(2)
   mvDir=move()  {    return new MoveCommand(mvDir);
@@ -162,6 +171,16 @@ UserCommand interpret() :
   {
     if (null == ac) return new ExamineCommand();	else return new ExamineCommand(ac);
   }
+| feature=push()
+  {
+    return new PushCommand(feature);  }
+| feature=pull()
+  {
+    return new PullCommand(feature);
+  }
+| statement=say()
+  {
+    return new SayCommand(statement);  }
 }
 
 DirectionConcept dir() :{}
@@ -194,7 +213,7 @@ IdentifierConcept id() :
 | dir=dirText() { return new IdentifierConcept(dir); }
 }
 
-String itemText() :
+String rawText() :
 {
   Token t;
   String text;}
@@ -203,23 +222,36 @@ String itemText() :
 | text=dirText() { return text; }
 }
 
-ItemConcept item() :
+String sentence() :
 {
   StringBuffer termimage = new StringBuffer();
   String s;
 }
 {
-  s=itemText()
+  s=rawText()
   {
-	termimage.append(s);  }
+	termimage.append(s);
+  }
   (
-    s=itemText()
+    s=rawText()
     {
-        termimage.append(" ");		termimage.append(s);
+        termimage.append(" ");
+		termimage.append(s);
     }
   )*
 {
-  return new ItemConcept(termimage.toString());}}
+  return termimage.toString();
+}
+}
+
+ItemConcept item() :
+{
+  String sentence;
+}
+{
+  sentence = sentence()  {	return new ItemConcept(sentence);
+  }}
+
 
 Concept dirOrItem() :
 {
@@ -310,6 +342,39 @@ ItemConcept take() :
   < TAKE_CMD > item=item()
   {	return item;
   }}
+
+FeatureConcept push() :
+{
+  String sentence;
+  FeatureConcept feature;}
+{
+  < PUSH_CMD > sentence=sentence()  {
+    return new FeatureConcept(sentence);  }}
+
+FeatureConcept pull() :
+{
+  String sentence;
+  FeatureConcept feature;
+}
+{
+  < PULL_CMD > sentence=sentence()
+  {
+    return new FeatureConcept(sentence);
+  }
+}
+
+StatementConcept say() :
+{
+  String sentence;
+  StatementConcept statement;
+}
+{
+  < SAY_CMD > sentence=sentence()
+  {
+    return new StatementConcept(sentence);
+  }
+}
+
 
 AmbiguousConcept examine() :
 {

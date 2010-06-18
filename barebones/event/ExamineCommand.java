@@ -10,12 +10,14 @@ public class ExamineCommand extends UserCommandImpl {
 	
 	public static final String EXAM_TARGET = "target";
 	
+	public static final String DEFAULT_TARGET = "room";
+	
 	public static ExamineCommand instance(HashMap<String,String> args) {
 		return new ExamineCommand(args.get(EXAM_TARGET));
 	}
 	
 	public ExamineCommand() {
-		this(new FeatureConcept("room"));
+		this(new FeatureConcept(DEFAULT_TARGET));
 	}
 	
 	public ExamineCommand(String target) {
