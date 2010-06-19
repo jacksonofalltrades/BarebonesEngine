@@ -13,13 +13,15 @@ public class IdentifierConcept implements Concept
 	}
 
 	public String disambiguate() {
-		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
-	public String getId(HashMap<Pattern, String> patternIdMap) {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * For now, no pre-filtering is done, so patternIdMap is ignored.
+	 */
+	public String getId(HashMap<Pattern, String> patternIdMap) 
+	{
+		return m_idText;
 	}
 
 	public String toString()

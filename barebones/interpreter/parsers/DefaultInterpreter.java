@@ -15,6 +15,7 @@ import barebones.concept.IdentifierConcept;
 import barebones.concept.ItemConcept;
 import barebones.concept.FeatureConcept;
 import barebones.concept.StatementConcept;
+import barebones.concept.PersonConcept;
 import barebones.concept.AmbiguousConcept;
 
 import barebones.event.UserCommand;
@@ -31,6 +32,8 @@ import barebones.event.ExamineCommand;
 import barebones.event.PushCommand;
 import barebones.event.PullCommand;
 import barebones.event.SayCommand;
+
+import barebones.world.object.Room;
 
 @SuppressWarnings("all")
 public class DefaultInterpreter implements DefaultInterpreterConstants {
@@ -60,7 +63,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
       } catch (Exception e) {
         System.out.println("NOK.");
         System.out.println(e.getMessage());
-        DefaultInterpreter.ReInit(System.in);
+        parser.ReInit(System.in);
       } catch (Error e) {
         System.out.println("Oops.");
         System.out.println(e.getMessage());
@@ -69,12 +72,11 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     }
   }
 
-  static final public UserCommand interpret() throws ParseException {
+  final public UserCommand interpret() throws ParseException {
         Concept c;
         DirectionConcept mvDir;
         IdentifierConcept id;
         ItemConcept item;
-        AmbiguousConcept ac;
         FeatureConcept feature;
         StatementConcept statement;
     if (jj_2_1(2)) {
@@ -116,9 +118,10 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
         {if (true) return new TakeCommand(item);}
         break;
       case EXAM_CMD:
-        ac = examine();
-    if (null == ac) {if (true) return new ExamineCommand();}
-        else {if (true) return new ExamineCommand(ac);}
+        c = examine();
+    if (null == c) {if (true) return new ExamineCommand();}
+    else if (DirectionConcept.class.isInstance(c)) {if (true) return new ExamineCommand((DirectionConcept)c);}
+        else {if (true) return new ExamineCommand(new AmbiguousConcept(c));}
         break;
       case PUSH_CMD:
         feature = push();
@@ -141,7 +144,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public DirectionConcept dir() throws ParseException {
+  final public DirectionConcept dir() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case NDIR:
       jj_consume_token(NDIR);
@@ -175,32 +178,32 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public String dirText() throws ParseException {
+  final public String dirText() throws ParseException {
   Token t;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case NDIR:
       t = jj_consume_token(NDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.NORTH;}
       break;
     case SDIR:
       t = jj_consume_token(SDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.SOUTH;}
       break;
     case EDIR:
       t = jj_consume_token(EDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.EAST;}
       break;
     case WDIR:
       t = jj_consume_token(WDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.WEST;}
       break;
     case UDIR:
       t = jj_consume_token(UDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.UP;}
       break;
     case DDIR:
       t = jj_consume_token(DDIR);
-               {if (true) return t.image;}
+               {if (true) return Room.DOWN;}
       break;
     default:
       jj_la1[2] = jj_gen;
@@ -210,9 +213,9 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public IdentifierConcept id() throws ParseException {
+  final public Concept id() throws ParseException {
   Token t;
-  String dir;
+  Concept c;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case ID_CONCEPT:
       t = jj_consume_token(ID_CONCEPT);
@@ -228,8 +231,8 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     case WDIR:
     case UDIR:
     case DDIR:
-      dir = dirText();
-                  {if (true) return new IdentifierConcept(dir);}
+      c = dir();
+            {if (true) return c;}
       break;
     default:
       jj_la1[3] = jj_gen;
@@ -239,7 +242,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public String rawText() throws ParseException {
+  final public String rawText() throws ParseException {
   Token t;
   String text;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -264,7 +267,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public String sentence() throws ParseException {
+  final public String sentence() throws ParseException {
   StringBuffer termimage = new StringBuffer();
   String s;
     s = rawText();
@@ -293,14 +296,14 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public ItemConcept item() throws ParseException {
+  final public ItemConcept item() throws ParseException {
   String sentence;
     sentence = sentence();
-        {if (true) return new ItemConcept(sentence);}
+    {if (true) return new ItemConcept(sentence);}
     throw new Error("Missing return statement in function");
   }
 
-  static final public Concept dirOrItem() throws ParseException {
+  final public Concept dirOrItem() throws ParseException {
   DirectionConcept dir;
   ItemConcept item;
     if (jj_2_2(2)) {
@@ -327,7 +330,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public DirectionConcept move() throws ParseException {
+  final public DirectionConcept move() throws ParseException {
     DirectionConcept mvDir;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case MOVE_CMD:
@@ -342,35 +345,41 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public void inventory() throws ParseException {
+  final public void inventory() throws ParseException {
     jj_consume_token(INV_CMD);
   }
 
-  static final public void time() throws ParseException {
+  final public void time() throws ParseException {
     jj_consume_token(TIME_CMD);
   }
 
-  static final public void quit() throws ParseException {
+  final public void quit() throws ParseException {
     jj_consume_token(QUIT_CMD);
   }
 
-  static final public IdentifierConcept save() throws ParseException {
-    IdentifierConcept saveId;
+  final public IdentifierConcept save() throws ParseException {
+        Concept concept;
     jj_consume_token(SAVE_CMD);
-    saveId = id();
-    {if (true) return saveId;}
+    concept = id();
+    if (concept instanceof IdentifierConcept)
+            {if (true) return (IdentifierConcept)concept;}
+        else
+                {if (true) return null;}
     throw new Error("Missing return statement in function");
   }
 
-  static final public IdentifierConcept restore() throws ParseException {
-        IdentifierConcept restId;
+  final public IdentifierConcept restore() throws ParseException {
+        Concept concept;
     jj_consume_token(REST_CMD);
-    restId = id();
-        {if (true) return restId;}
+    concept = id();
+    if (concept instanceof IdentifierConcept)
+                {if (true) return (IdentifierConcept)concept;}
+        else
+                {if (true) return null;}
     throw new Error("Missing return statement in function");
   }
 
-  static final public ItemConcept drop() throws ParseException {
+  final public ItemConcept drop() throws ParseException {
   ItemConcept item;
     jj_consume_token(DROP_CMD);
     item = item();
@@ -378,7 +387,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public Concept open_object() throws ParseException {
+  final public Concept open_object() throws ParseException {
   Concept c;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case DOOR_TO_THE:
@@ -404,7 +413,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public Concept open() throws ParseException {
+  final public Concept open() throws ParseException {
   Concept c;
   DirectionConcept dir;
   ItemConcept item;
@@ -414,7 +423,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public ItemConcept take() throws ParseException {
+  final public ItemConcept take() throws ParseException {
   ItemConcept item;
     jj_consume_token(TAKE_CMD);
     item = item();
@@ -422,7 +431,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public FeatureConcept push() throws ParseException {
+  final public FeatureConcept push() throws ParseException {
   String sentence;
   FeatureConcept feature;
     jj_consume_token(PUSH_CMD);
@@ -431,7 +440,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public FeatureConcept pull() throws ParseException {
+  final public FeatureConcept pull() throws ParseException {
   String sentence;
   FeatureConcept feature;
     jj_consume_token(PULL_CMD);
@@ -440,7 +449,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public StatementConcept say() throws ParseException {
+  final public StatementConcept say() throws ParseException {
   String sentence;
   StatementConcept statement;
     jj_consume_token(SAY_CMD);
@@ -449,7 +458,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public AmbiguousConcept examine() throws ParseException {
+  final public Concept examine() throws ParseException {
   ItemConcept item=null;
     jj_consume_token(EXAM_CMD);
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -466,14 +475,17 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
       jj_la1[9] = jj_gen;
       ;
     }
-          if (null == item)
-                {if (true) return null;}
+          DirectionConcept dc = DirectionConcept.instance(item.toString());
+          if (null == dc)
+                {if (true) return new AmbiguousConcept(item,
+                        new FeatureConcept(item.toString()),
+                        new PersonConcept(item.toString()));}
           else
-                {if (true) return new AmbiguousConcept(item, new FeatureConcept(item.toString()));}
+                {if (true) return dc;}
     throw new Error("Missing return statement in function");
   }
 
-  static final public int one_line() throws ParseException {
+  final public int one_line() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case MINUS:
     case CONSTANT:
@@ -494,7 +506,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     throw new Error("Missing return statement in function");
   }
 
-  static final public void sum() throws ParseException {
+  final public void sum() throws ParseException {
     term();
     label_2:
     while (true) {
@@ -523,7 +535,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     }
   }
 
-  static final public void term() throws ParseException {
+  final public void term() throws ParseException {
     unary();
     label_3:
     while (true) {
@@ -552,7 +564,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     }
   }
 
-  static final public void unary() throws ParseException {
+  final public void unary() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case MINUS:
       jj_consume_token(MINUS);
@@ -569,7 +581,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     }
   }
 
-  static final public void element() throws ParseException {
+  final public void element() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case CONSTANT:
       jj_consume_token(CONSTANT);
@@ -586,31 +598,26 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     }
   }
 
-  static private boolean jj_2_1(int xla) {
+  private boolean jj_2_1(int xla) {
     jj_la = xla; jj_lastpos = jj_scanpos = token;
     try { return !jj_3_1(); }
     catch(LookaheadSuccess ls) { return true; }
     finally { jj_save(0, xla); }
   }
 
-  static private boolean jj_2_2(int xla) {
+  private boolean jj_2_2(int xla) {
     jj_la = xla; jj_lastpos = jj_scanpos = token;
     try { return !jj_3_2(); }
     catch(LookaheadSuccess ls) { return true; }
     finally { jj_save(1, xla); }
   }
 
-  static private boolean jj_3_2() {
+  private boolean jj_3_2() {
     if (jj_3R_5()) return true;
     return false;
   }
 
-  static private boolean jj_3_1() {
-    if (jj_3R_4()) return true;
-    return false;
-  }
-
-  static private boolean jj_3R_4() {
+  private boolean jj_3R_4() {
     Token xsp;
     xsp = jj_scanpos;
     if (jj_scan_token(5)) jj_scanpos = xsp;
@@ -618,7 +625,12 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     return false;
   }
 
-  static private boolean jj_3R_5() {
+  private boolean jj_3_1() {
+    if (jj_3R_4()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_5() {
     Token xsp;
     xsp = jj_scanpos;
     if (jj_3R_6()) {
@@ -640,49 +652,48 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     return false;
   }
 
-  static private boolean jj_3R_6() {
+  private boolean jj_3R_6() {
     if (jj_scan_token(NDIR)) return true;
     return false;
   }
 
-  static private boolean jj_3R_11() {
+  private boolean jj_3R_11() {
     if (jj_scan_token(DDIR)) return true;
     return false;
   }
 
-  static private boolean jj_3R_10() {
+  private boolean jj_3R_10() {
     if (jj_scan_token(UDIR)) return true;
     return false;
   }
 
-  static private boolean jj_3R_9() {
+  private boolean jj_3R_9() {
     if (jj_scan_token(WDIR)) return true;
     return false;
   }
 
-  static private boolean jj_3R_8() {
+  private boolean jj_3R_8() {
     if (jj_scan_token(EDIR)) return true;
     return false;
   }
 
-  static private boolean jj_3R_7() {
+  private boolean jj_3R_7() {
     if (jj_scan_token(SDIR)) return true;
     return false;
   }
 
-  static private boolean jj_initialized_once = false;
   /** Generated Token Manager. */
-  static public DefaultInterpreterTokenManager token_source;
-  static SimpleCharStream jj_input_stream;
+  public DefaultInterpreterTokenManager token_source;
+  SimpleCharStream jj_input_stream;
   /** Current token. */
-  static public Token token;
+  public Token token;
   /** Next token. */
-  static public Token jj_nt;
-  static private int jj_ntk;
-  static private Token jj_scanpos, jj_lastpos;
-  static private int jj_la;
-  static private int jj_gen;
-  static final private int[] jj_la1 = new int[17];
+  public Token jj_nt;
+  private int jj_ntk;
+  private Token jj_scanpos, jj_lastpos;
+  private int jj_la;
+  private int jj_gen;
+  final private int[] jj_la1 = new int[17];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static {
@@ -695,9 +706,9 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
    private static void jj_la1_init_1() {
       jj_la1_1 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x6,0x0,0x0,0x0,0x0,0x4,0x4,};
    }
-  static final private JJCalls[] jj_2_rtns = new JJCalls[2];
-  static private boolean jj_rescan = false;
-  static private int jj_gc = 0;
+  final private JJCalls[] jj_2_rtns = new JJCalls[2];
+  private boolean jj_rescan = false;
+  private int jj_gc = 0;
 
   /** Constructor with InputStream. */
   public DefaultInterpreter(java.io.InputStream stream) {
@@ -705,13 +716,6 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
   /** Constructor with InputStream and supplied encoding */
   public DefaultInterpreter(java.io.InputStream stream, String encoding) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser.  ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
-    jj_initialized_once = true;
     try { jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
     token_source = new DefaultInterpreterTokenManager(jj_input_stream);
     token = new Token();
@@ -722,11 +726,11 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
   /** Reinitialise. */
-  static public void ReInit(java.io.InputStream stream) {
+  public void ReInit(java.io.InputStream stream) {
      ReInit(stream, null);
   }
   /** Reinitialise. */
-  static public void ReInit(java.io.InputStream stream, String encoding) {
+  public void ReInit(java.io.InputStream stream, String encoding) {
     try { jj_input_stream.ReInit(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
     token_source.ReInit(jj_input_stream);
     token = new Token();
@@ -738,13 +742,6 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
 
   /** Constructor. */
   public DefaultInterpreter(java.io.Reader stream) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser. ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
-    jj_initialized_once = true;
     jj_input_stream = new SimpleCharStream(stream, 1, 1);
     token_source = new DefaultInterpreterTokenManager(jj_input_stream);
     token = new Token();
@@ -755,7 +752,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
   /** Reinitialise. */
-  static public void ReInit(java.io.Reader stream) {
+  public void ReInit(java.io.Reader stream) {
     jj_input_stream.ReInit(stream, 1, 1);
     token_source.ReInit(jj_input_stream);
     token = new Token();
@@ -767,13 +764,6 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
 
   /** Constructor with generated Token Manager. */
   public DefaultInterpreter(DefaultInterpreterTokenManager tm) {
-    if (jj_initialized_once) {
-      System.out.println("ERROR: Second call to constructor of static parser. ");
-      System.out.println("       You must either use ReInit() or set the JavaCC option STATIC to false");
-      System.out.println("       during parser generation.");
-      throw new Error();
-    }
-    jj_initialized_once = true;
     token_source = tm;
     token = new Token();
     jj_ntk = -1;
@@ -792,7 +782,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     for (int i = 0; i < jj_2_rtns.length; i++) jj_2_rtns[i] = new JJCalls();
   }
 
-  static private Token jj_consume_token(int kind) throws ParseException {
+  private Token jj_consume_token(int kind) throws ParseException {
     Token oldToken;
     if ((oldToken = token).next != null) token = token.next;
     else token = token.next = token_source.getNextToken();
@@ -817,8 +807,8 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
   static private final class LookaheadSuccess extends java.lang.Error { }
-  static final private LookaheadSuccess jj_ls = new LookaheadSuccess();
-  static private boolean jj_scan_token(int kind) {
+  final private LookaheadSuccess jj_ls = new LookaheadSuccess();
+  private boolean jj_scan_token(int kind) {
     if (jj_scanpos == jj_lastpos) {
       jj_la--;
       if (jj_scanpos.next == null) {
@@ -841,7 +831,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
 
 
 /** Get the next Token. */
-  static final public Token getNextToken() {
+  final public Token getNextToken() {
     if (token.next != null) token = token.next;
     else token = token.next = token_source.getNextToken();
     jj_ntk = -1;
@@ -850,7 +840,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
 /** Get the specific Token. */
-  static final public Token getToken(int index) {
+  final public Token getToken(int index) {
     Token t = token;
     for (int i = 0; i < index; i++) {
       if (t.next != null) t = t.next;
@@ -859,20 +849,20 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     return t;
   }
 
-  static private int jj_ntk() {
+  private int jj_ntk() {
     if ((jj_nt=token.next) == null)
       return (jj_ntk = (token.next=token_source.getNextToken()).kind);
     else
       return (jj_ntk = jj_nt.kind);
   }
 
-  static private java.util.List<int[]> jj_expentries = new java.util.ArrayList<int[]>();
-  static private int[] jj_expentry;
-  static private int jj_kind = -1;
-  static private int[] jj_lasttokens = new int[100];
-  static private int jj_endpos;
+  private java.util.List<int[]> jj_expentries = new java.util.ArrayList<int[]>();
+  private int[] jj_expentry;
+  private int jj_kind = -1;
+  private int[] jj_lasttokens = new int[100];
+  private int jj_endpos;
 
-  static private void jj_add_error_token(int kind, int pos) {
+  private void jj_add_error_token(int kind, int pos) {
     if (pos >= 100) return;
     if (pos == jj_endpos + 1) {
       jj_lasttokens[jj_endpos++] = kind;
@@ -898,7 +888,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
   /** Generate ParseException. */
-  static public ParseException generateParseException() {
+  public ParseException generateParseException() {
     jj_expentries.clear();
     boolean[] la1tokens = new boolean[36];
     if (jj_kind >= 0) {
@@ -935,14 +925,14 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
   }
 
   /** Enable tracing. */
-  static final public void enable_tracing() {
+  final public void enable_tracing() {
   }
 
   /** Disable tracing. */
-  static final public void disable_tracing() {
+  final public void disable_tracing() {
   }
 
-  static private void jj_rescan_token() {
+  private void jj_rescan_token() {
     jj_rescan = true;
     for (int i = 0; i < 2; i++) {
     try {
@@ -962,7 +952,7 @@ public class DefaultInterpreter implements DefaultInterpreterConstants {
     jj_rescan = false;
   }
 
-  static private void jj_save(int index, int xla) {
+  private void jj_save(int index, int xla) {
     JJCalls p = jj_2_rtns[index];
     while (p.gen > jj_gen) {
       if (p.next == null) { p = p.next = new JJCalls(); break; }

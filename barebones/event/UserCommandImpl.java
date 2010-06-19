@@ -15,6 +15,8 @@ abstract public class UserCommandImpl implements UserCommand
 {
 	protected boolean m_success;
 	
+	protected TargetScope m_scope;
+	
 	// Replace target with HashMap<String,Concept> - slot-name, concept map
 	protected String m_target;
 	protected HashMap<String,Concept> m_conceptMap;	
@@ -63,10 +65,11 @@ abstract public class UserCommandImpl implements UserCommand
 			m_conceptMap.put(entry.getKey(), entry.getValue());
 		}
 	}
-		
-	public UserCommandImpl()
+	
+	public UserCommandImpl(TargetScope scope)
 	{
 		m_success = false;
+		m_scope = scope;
 		m_targetEnableMap = new HashMap<String,Boolean>();
 		m_response = new UserResponseImpl();
 		m_changeMap = new HashMap<String,WODataBean>();
@@ -176,6 +179,14 @@ abstract public class UserCommandImpl implements UserCommand
 	
 	public boolean isSuccessful() {
 		return m_success;
+	}
+	
+	public TargetScope getScope() {
+		return m_scope;
+	}
+	
+	public void semanticallyResolveTargets()
+	{
 	}
 	
 	abstract public String toString();

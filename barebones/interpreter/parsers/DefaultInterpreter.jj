@@ -22,6 +22,7 @@ import barebones.concept.IdentifierConcept;
 import barebones.concept.ItemConcept;
 import barebones.concept.FeatureConcept;
 import barebones.concept.StatementConcept;
+import barebones.concept.PersonConcept;
 import barebones.concept.AmbiguousConcept;
 
 import barebones.event.UserCommand;
@@ -38,6 +39,8 @@ import barebones.event.ExamineCommand;
 import barebones.event.PushCommand;
 import barebones.event.PullCommand;
 import barebones.event.SayCommand;
+
+import barebones.world.object.Room;
 
 public class DefaultInterpreter {
   public static void main(String args[]) throws ParseException {
@@ -66,7 +69,7 @@ public class DefaultInterpreter {
       } catch (Exception e) {
         System.out.println("NOK.");
         System.out.println(e.getMessage());
-        DefaultInterpreter.ReInit(System.in);
+        parser.ReInit(System.in);
       } catch (Error e) {
         System.out.println("Oops.");
         System.out.println(e.getMessage());
@@ -135,7 +138,6 @@ UserCommand interpret() :
 	DirectionConcept mvDir;
 	IdentifierConcept id;
 	ItemConcept item;
-	AmbiguousConcept ac;
 	FeatureConcept feature;
 	StatementConcept statement;
 }{
@@ -167,9 +169,10 @@ UserCommand interpret() :
 | item=take()
   { 	return new TakeCommand(item); 
   }
-| ac=examine()
+| c=examine()
   {
-    if (null == ac) return new ExamineCommand();	else return new ExamineCommand(ac);
+    if (null == c) return new ExamineCommand();
+    else if (DirectionConcept.class.isInstance(c)) return new ExamineCommand((DirectionConcept)c);	else return new ExamineCommand(new AmbiguousConcept(c));
   }
 | feature=push()
   {
@@ -194,29 +197,30 @@ String dirText() :
 {
   Token t;}
 {
-  t=< NDIR > { return t.image; }
-| t=< SDIR > { return t.image; }
-| t=< EDIR > { return t.image; }
-| t=< WDIR > { return t.image; }
-| t=< UDIR > { return t.image; }
-| t=< DDIR > { return t.image; }
+  t=< NDIR > { return Room.NORTH; }
+| t=< SDIR > { return Room.SOUTH; }
+| t=< EDIR > { return Room.EAST; }
+| t=< WDIR > { return Room.WEST; }
+| t=< UDIR > { return Room.UP; }
+| t=< DDIR > { return Room.DOWN; }
 }
 
-IdentifierConcept id() :
+Concept id() :
 {
   Token t;
-  String dir;
+  Concept c;
 }
 {
   t=< ID_CONCEPT > { return new IdentifierConcept(t.image); }
 | t=< ITEM_WORD > { return new IdentifierConcept(t.image); }
-| dir=dirText() { return new IdentifierConcept(dir); }
+| c=dir() { return c; }
 }
 
 String rawText() :
 {
   Token t;
-  String text;}
+  String text;
+}
 {
   t=< ITEM_WORD > { return t.image; }
 | text=dirText() { return text; }
@@ -249,7 +253,8 @@ ItemConcept item() :
   String sentence;
 }
 {
-  sentence = sentence()  {	return new ItemConcept(sentence);
+  sentence = sentence()  {
+    return new ItemConcept(sentence);
   }}
 
 
@@ -289,18 +294,24 @@ void quit() : {}{
 
 IdentifierConcept save() :
 {
-    IdentifierConcept saveId;
+  	Concept concept;
 }
 {
-  < SAVE_CMD > saveId=id()  {
-    return saveId;  }}
+  < SAVE_CMD > concept=id()  {
+    if (concept instanceof IdentifierConcept)
+	    return (IdentifierConcept)concept;
+	else
+		return null;  }}
 
 IdentifierConcept restore() :
-{	IdentifierConcept restId;
-}
 {
-  < REST_CMD > restId=id()
-  {	return restId;
+  	Concept concept;}
+{
+  < REST_CMD > concept=id()
+  {
+    if (concept instanceof IdentifierConcept)		return (IdentifierConcept)concept;
+	else
+		return null;
   }}
 
 ItemConcept drop() :
@@ -376,7 +387,7 @@ StatementConcept say() :
 }
 
 
-AmbiguousConcept examine() :
+Concept examine() :
 {
   ItemConcept item=null;}
 {	< EXAM_CMD >
@@ -384,10 +395,13 @@ AmbiguousConcept examine() :
 		item=item()
 	]
 	{
-	  if (null == item)
-	  	return null;
+	  DirectionConcept dc = DirectionConcept.instance(item.toString());
+	  if (null == dc)
+	  	return new AmbiguousConcept(item,
+	  		new FeatureConcept(item.toString()),
+	  		new PersonConcept(item.toString()));
 	  else
-	  	return new AmbiguousConcept(item, new FeatureConcept(item.toString()));
+	  	return dc;
 	}
 }
 

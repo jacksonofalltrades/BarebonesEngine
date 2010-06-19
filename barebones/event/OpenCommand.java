@@ -18,12 +18,14 @@ public class OpenCommand extends UserCommandImpl {
 	
 	public OpenCommand(String target)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		m_target = target;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public OpenCommand(DirectionConcept dirConcept)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		addSlotConcepts(makeSlot(OPEN_DIR, dirConcept));
 		m_target = dirConcept.toString();
 	}
@@ -31,6 +33,7 @@ public class OpenCommand extends UserCommandImpl {
 	@SuppressWarnings("unchecked")
 	public OpenCommand(ItemConcept itemConcept)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		addSlotConcepts(makeSlot(OPEN_TARGET, itemConcept));
 		m_target = itemConcept.toString();
 	}

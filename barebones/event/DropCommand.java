@@ -15,12 +15,14 @@ public class DropCommand extends UserCommandImpl {
 	}
 	
 	public DropCommand(String target) {
+		super(TargetScope.CURRENT_ROOM);
 		m_target = target;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public DropCommand(ItemConcept itemConcept)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		addSlotConcepts(makeSlot(DROP_ITEM, itemConcept));
 		m_target = itemConcept.toString();
 	}

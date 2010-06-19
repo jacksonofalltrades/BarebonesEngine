@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 import barebones.engine.GameEngineAccessor;
 import barebones.engine.Player;
@@ -204,6 +205,26 @@ public class Room extends WorldObjectImpl implements WorldObject {
 		*/
 		
 		return "";
+	}
+	
+	/**
+	 * Find a feature element in this room by 
+	 * @param featureText
+	 * @return
+	 */
+	public HashMap<Pattern, String> getFeaturePatternIdMap()
+	{
+		return null;
+	}
+	
+	public HashMap<Pattern, String> getItemPatternIdMap()
+	{
+		return null;
+	}
+	
+	public HashMap<Pattern, String> getNpcPatternIdMap()
+	{
+		return null;
 	}
 		
 	public void addFeatures(Vector<RoomFeature> rs)

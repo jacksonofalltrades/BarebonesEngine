@@ -9,6 +9,11 @@ public class QuitCommand extends UserCommandImpl
 	public static QuitCommand instance(HashMap<String,String> args) {
 		return new QuitCommand();
 	}
+	
+	public QuitCommand()
+	{
+		super(TargetScope.NONE);
+	}
 
 	@Override
 	public String toString() {

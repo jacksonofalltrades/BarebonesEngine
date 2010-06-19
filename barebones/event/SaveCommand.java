@@ -18,11 +18,13 @@ public class SaveCommand extends UserCommandImpl
 	@SuppressWarnings("unchecked")
 	public SaveCommand(IdentifierConcept id)
 	{
+		super(TargetScope.NONE);
 		addSlotConcepts(makeSlot(SAVE_GAMEID, id));
 		m_target = id.toString();
 	}
 	
 	public SaveCommand(String saveId) {		
+		super(TargetScope.NONE);
 		m_target = saveId;
 	}
 

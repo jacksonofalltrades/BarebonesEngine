@@ -1,5 +1,8 @@
-#Thu Dec 24 19:05:56 PST 2009
+#Fri Jun 18 22:36:38 PDT 2010
 CLEAR_CONSOLE=false
+JAVACC_OPTIONS=-STATIC\=false
+JJDOC_OPTIONS=
+JJTREE_OPTIONS=
 JJ_NATURE=true
 JTB_OPTIONS=-p\=barebones.interpreter.parsers
 RUNTIME_JJJAR=/home/dej/.eclipse/org.eclipse.platform_3.5.0_155965261/plugins/sf.eclipse.javacc_1.5.17/javacc.jar

@@ -11,6 +11,7 @@ public class GetInventoryCommand extends UserCommandImpl
 	}
 	
 	public GetInventoryCommand() {
+		super(TargetScope.NONE);
 		this.m_target = "";
 	}
 	

@@ -2,6 +2,7 @@ package barebones.event;
 
 public class Subcommand extends UserCommandImpl {
 	public Subcommand(String value) {
+		super(TargetScope.NONE);
 		m_target = value;
 	}
 	

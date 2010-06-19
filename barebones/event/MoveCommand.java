@@ -18,12 +18,14 @@ public class MoveCommand extends UserCommandImpl
 	@SuppressWarnings("unchecked")
 	public MoveCommand(DirectionConcept dirConcept)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		addSlotConcepts(makeSlot(MOVE_DIR, dirConcept));
 		m_target = dirConcept.toString();
 	}
 	
 	public MoveCommand(String target)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		m_target = target;
 	}
 

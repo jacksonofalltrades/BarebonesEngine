@@ -22,6 +22,11 @@ public class GetIntroCommand extends UserCommandImpl
 	public static GetIntroCommand instance(HashMap<String,String> args) {
 		return new GetIntroCommand();
 	}
+	
+	public GetIntroCommand()
+	{
+		super(TargetScope.NONE);
+	}
 		
 	public String toString() {
 		return id;

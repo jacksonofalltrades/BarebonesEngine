@@ -2,6 +2,9 @@ package barebones.event;
 
 import java.util.HashMap;
 
+import barebones.concept.DirectionConcept;
+import barebones.concept.ItemConcept;
+
 public class UnlockCommand extends UserCommandImpl 
 {
 	public static final String id = "UNLK";
@@ -18,8 +21,21 @@ public class UnlockCommand extends UserCommandImpl
 	}
 	
 	public UnlockCommand(String dir, String itemId) {
+		super(TargetScope.CURRENT_ROOM);
 		m_target = dir;
 		m_itemId = itemId;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public UnlockCommand(DirectionConcept dir, ItemConcept item) 
+	{
+		super(TargetScope.CURRENT_ROOM);
+		addSlotConcepts(
+				makeSlot(UNLOCK_DIR, dir),
+				makeSlot(UNLOCK_ITEM, item)
+				);
+		m_target = dir.toString();
+		m_itemId = item.toString();
 	}
 	
 	public String getItemId() {

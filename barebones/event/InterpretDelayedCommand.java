@@ -15,9 +15,10 @@ public class InterpretDelayedCommand extends UserCommandImpl
 
 	public InterpretDelayedCommand(String rawInputText)
 	{
+		super(TargetScope.NONE);
 		this.m_target = rawInputText;
 	}
-
+	
 	@Override
 	public String toString() {
 		return id;

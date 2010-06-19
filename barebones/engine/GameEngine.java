@@ -16,7 +16,6 @@ import barebones.event.Subcommand;
 import barebones.event.UserCommand;
 import barebones.event.YesNoSubcommand;
 import barebones.interpreter.ConceptParserInterpreter;
-import barebones.interpreter.LexicalizedParserInterpreter;
 import barebones.interpreter.UnidentifiedCommandException;
 import barebones.io.ResponseContent;
 import barebones.io.User;

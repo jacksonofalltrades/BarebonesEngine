@@ -6,6 +6,7 @@ public class TickEvent extends UserCommandImpl
 	
 	public TickEvent(long totalSecondsPassed)
 	{
+		super(TargetScope.NONE);
 		m_totalSecondsPassed = totalSecondsPassed;
 		m_target = "";
 	}

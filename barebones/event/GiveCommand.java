@@ -18,6 +18,7 @@ public class GiveCommand extends UserCommandImpl
 	
 	public GiveCommand(String item, String recipient) 
 	{		
+		super(TargetScope.CURRENT_ROOM);
 		m_target = item;
 		m_npcId = recipient;
 	}

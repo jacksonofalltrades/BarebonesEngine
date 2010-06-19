@@ -16,12 +16,14 @@ public class TakeCommand extends UserCommandImpl
 	}
 
 	public TakeCommand(String target) {
+		super(TargetScope.CURRENT_ROOM);
 		m_target = target;
 	}
 
 	@SuppressWarnings("unchecked")
 	public TakeCommand(ItemConcept itemConcept)
 	{
+		super(TargetScope.CURRENT_ROOM);
 		addSlotConcepts(makeSlot(TAKE_ITEM, itemConcept));
 		m_target = itemConcept.toString();
 	}

@@ -9,6 +9,14 @@ import barebones.world.data.WODataBean;
 
 public interface UserCommand extends GameEvent, UserInput
 {
+	public enum TargetScope {
+		NONE, // Indicates no targets are present for the command
+		WORLD, // Search the entire game world for a target
+		REGION, // Search the entire current region for a target
+		CURRENT_ROOM, // Search only the current room for a target
+		PLAYERS_INVENTORY // Search only the player's inventory for a target
+	};
+	
 	public String id();
 	public boolean causesTick();
 	
@@ -30,4 +38,6 @@ public interface UserCommand extends GameEvent, UserInput
 	public String getSubcommandDesc();
 	public String getCancelText();
 	public String getDisambigText();
+	public TargetScope getScope();
+	public void semanticallyResolveTargets();
 }

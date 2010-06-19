@@ -18,11 +18,13 @@ public class RestoreCommand extends UserCommandImpl
 	@SuppressWarnings("unchecked")
 	public RestoreCommand(IdentifierConcept id)
 	{
+		super(TargetScope.NONE);
 		addSlotConcepts(makeSlot(LOAD_GAMEID, id));
 		m_target = id.toString();
 	}
 
 	public RestoreCommand(String savedGameId) {
+		super(TargetScope.NONE);
 		m_target = savedGameId;
 	}
 

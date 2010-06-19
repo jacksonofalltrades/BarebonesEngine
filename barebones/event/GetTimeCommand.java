@@ -10,6 +10,11 @@ public class GetTimeCommand extends UserCommandImpl
 		return new GetTimeCommand();
 	}
 	
+	public GetTimeCommand()
+	{
+		super(TargetScope.NONE);		
+	}
+	
 	public String id()
 	{
 		return id;

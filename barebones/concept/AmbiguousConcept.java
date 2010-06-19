@@ -21,6 +21,9 @@ public class AmbiguousConcept implements Concept
 		return null;
 	}
 
+	/**
+	 * Attempt to resolve ambiguity and return an id
+	 */
 	public String getId(HashMap<Pattern, String> patternIdMap) {
 		// TODO Auto-generated method stub
 		return null;
