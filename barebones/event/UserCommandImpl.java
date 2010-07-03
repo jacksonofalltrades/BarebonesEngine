@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import barebones.concept.Concept;
+import barebones.concept.ConceptResolver;
+import barebones.engine.GameEngineAccessor;
 import barebones.io.ResponseContent;
 import barebones.io.UserResponse;
 import barebones.io.UserResponseImpl;
@@ -20,6 +22,7 @@ abstract public class UserCommandImpl implements UserCommand
 	// Replace target with HashMap<String,Concept> - slot-name, concept map
 	protected String m_target;
 	protected HashMap<String,Concept> m_conceptMap;	
+	protected HashMap<String,String> m_conceptIdMap;
 	
 	protected HashMap<String,Boolean> m_targetEnableMap;
 	protected UserResponse m_response;
@@ -66,6 +69,16 @@ abstract public class UserCommandImpl implements UserCommand
 		}
 	}
 	
+	public String getSlotConceptId(String slotKey)
+	{
+		if (m_conceptIdMap.containsKey(slotKey)) {
+			return m_conceptIdMap.get(slotKey);
+		}
+		else {
+			return null;
+		}
+	}
+	
 	public UserCommandImpl(TargetScope scope)
 	{
 		m_success = false;
@@ -75,6 +88,7 @@ abstract public class UserCommandImpl implements UserCommand
 		m_changeMap = new HashMap<String,WODataBean>();
 		m_requiresSubcommand = false;
 		m_conceptMap = new HashMap<String,Concept>();
+		m_conceptIdMap = new HashMap<String,String>();
 	}
 	
 	public void loadMetadata()
@@ -180,13 +194,10 @@ abstract public class UserCommandImpl implements UserCommand
 	public boolean isSuccessful() {
 		return m_success;
 	}
-	
-	public TargetScope getScope() {
-		return m_scope;
-	}
-	
-	public void semanticallyResolveTargets()
+		
+	public void semanticallyResolveTargets(GameEngineAccessor engineRef)
 	{
+		m_conceptIdMap = ConceptResolver.resolveTargetConcepts(engineRef, m_scope, m_conceptMap);
 	}
 	
 	abstract public String toString();

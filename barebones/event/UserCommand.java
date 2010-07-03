@@ -3,6 +3,7 @@ package barebones.event;
 import java.util.HashMap;
 
 import barebones.client.UserInput;
+import barebones.engine.GameEngineAccessor;
 import barebones.io.ResponseContent;
 import barebones.io.UserResponse;
 import barebones.world.data.WODataBean;
@@ -38,6 +39,5 @@ public interface UserCommand extends GameEvent, UserInput
 	public String getSubcommandDesc();
 	public String getCancelText();
 	public String getDisambigText();
-	public TargetScope getScope();
-	public void semanticallyResolveTargets();
+	public void semanticallyResolveTargets(GameEngineAccessor engineRef);
 }

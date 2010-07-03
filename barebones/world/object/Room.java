@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
+import barebones.concept.ConceptContainer;
 import barebones.engine.GameEngineAccessor;
 import barebones.engine.Player;
 import barebones.event.ExamineCommand;
@@ -17,7 +18,7 @@ import barebones.world.data.WODataBean;
 import barebones.world.data.WORoomBean;
 import barebones.world.feature.RoomFeature;
 
-public class Room extends WorldObjectImpl implements WorldObject {
+public class Room extends WorldObjectImpl implements WorldObject, ConceptContainer {
 	
 	public static final int INVALID_DIRECTION = -77;
 	public static final int NO_PASSAGE = -1;
@@ -206,27 +207,34 @@ public class Room extends WorldObjectImpl implements WorldObject {
 		
 		return "";
 	}
-	
+
 	/**
-	 * Find a feature element in this room by 
-	 * @param featureText
-	 * @return
+	 * Item, Feature, Person, etc. contained in this room should register
+	 * itself and it's list of patterns to it's id.
 	 */
+	public void registerPatternIdMapping(Pattern pattern, String id)
+	{
+		// TODO: Fill this in
+	}
+		
 	public HashMap<Pattern, String> getFeaturePatternIdMap()
 	{
+		// TODO: Fill this in
 		return null;
 	}
 	
 	public HashMap<Pattern, String> getItemPatternIdMap()
 	{
+		// TODO: Fill this in
 		return null;
 	}
-	
-	public HashMap<Pattern, String> getNpcPatternIdMap()
+
+	public HashMap<Pattern, String> getPersonPatternIdMap()
 	{
-		return null;
+		// TODO: Fill this in
+		return null;		
 	}
-		
+			
 	public void addFeatures(Vector<RoomFeature> rs)
 	{
 		m_featureVec.addAll(rs);

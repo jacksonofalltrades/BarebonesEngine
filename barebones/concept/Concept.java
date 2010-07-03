@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public interface Concept 
-{
+{	
 	/**
 	 * Given a mapping of patterns to real-world ids, return the one in the map
 	 * that matches this Concept's raw data (also based on the inherent type of
