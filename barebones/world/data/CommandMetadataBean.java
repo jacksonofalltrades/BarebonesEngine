@@ -1,13 +1,14 @@
 package barebones.world.data;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
+import barebones.io.dal.GameObjectMarshaller;
 import barebones.world.filter.CommandMetadataFilter;
 
-public class CommandMetadataBean extends WORootDataBean {
+public class CommandMetadataBean extends RootDataBean {
 	protected static final String METADATA_PATH = "commands/";
 	
 	static {
-		ObjectMarshaller.registerBean(CommandMetadataBean.class, new CommandMetadataFilter(), METADATA_PATH);
+		GameObjectMarshaller.registerBean(CommandMetadataBean.class, new CommandMetadataFilter(), METADATA_PATH);
 	}
 	
 	public String disambigText;

@@ -2,7 +2,7 @@ package barebones.io.dal;
 
 import barebones.world.data.GameConfigDataBean;
 
-public class GameConfigLoader extends ObjectMarshaller
+public class GameConfigLoader extends GameObjectMarshaller
 {
 	protected static final String GAME_CONFIG_ID = "game";
 	

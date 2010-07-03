@@ -3,14 +3,16 @@ package barebones.world.data;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
 
-public class ObjectDetailBean extends WORootDataBean {
+import barebones.io.dal.GameObjectMarshaller;
+
+public class ObjectDetailBean extends RootDataBean {
 	
 	protected static final String DETAIL_PATH = "details/";
 	
 	static {
-		ObjectMarshaller.registerBean(ObjectDetailBean.class, null, DETAIL_PATH);
+		GameObjectMarshaller.registerBean(ObjectDetailBean.class, null, DETAIL_PATH);
 	}
 	
 	public static ObjectDetailBean createEmpty(String id) {

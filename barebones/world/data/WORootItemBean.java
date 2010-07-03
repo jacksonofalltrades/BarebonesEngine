@@ -1,13 +1,14 @@
 package barebones.world.data;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
+import barebones.io.dal.GameObjectMarshaller;
 
-public class WORootItemBean extends WORootDataBean 
+public class WORootItemBean extends RootDataBean 
 {
 	protected static final String ITEM_PATH = "items/";
 	
 	static {
-		ObjectMarshaller.registerBean(WORootItemBean.class, null, ITEM_PATH);
+		GameObjectMarshaller.registerBean(WORootItemBean.class, null, ITEM_PATH);
 	}
 	
 	public WOItemBean itemData;

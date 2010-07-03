@@ -3,10 +3,12 @@ package barebones.world.data;
 import java.util.HashMap;
 import java.util.Vector;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
+
+import barebones.io.dal.GameObjectMarshaller;
 
 
-public class WORegionBean extends WORootDataBean
+public class WORegionBean extends RootDataBean
 {
 	protected static final String REGION_PATH = "regions/";
 	
@@ -14,7 +16,7 @@ public class WORegionBean extends WORootDataBean
 	public Vector<WORoomBlockBean> roomBlocks;
 	
 	static {
-		ObjectMarshaller.registerBean(WORegionBean.class, null, REGION_PATH);
+		GameObjectMarshaller.registerBean(WORegionBean.class, null, REGION_PATH);
 	}
 	
 	public void setrooms(HashMap<String,WORoomBean> rooms) {

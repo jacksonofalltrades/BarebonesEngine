@@ -4,7 +4,7 @@ import java.util.HashMap;
 import barebones.engine.GameEngineAccessor;
 import barebones.world.data.PlayerStateBean;
 
-public class PlayerStateLoader extends ObjectMarshaller {	
+public class PlayerStateLoader extends GameObjectMarshaller {	
 	protected GameEngineAccessor m_engineRef;
 		
 	protected HashMap<String,PlayerStateBean> m_playerStateCache;
@@ -25,7 +25,7 @@ public class PlayerStateLoader extends ObjectMarshaller {
 		
 		if ((savedGameId.length()>0) || !m_playerStateCache.containsKey(userId)) {
 			// Construct objId with userId.savedGameId (if savedGameId is not empty)
-			String objId = (savedGameId.length()>0)?userId+ObjectMarshaller.QUALIFIER_SEPARATOR+savedGameId:userId;
+			String objId = (savedGameId.length()>0)?userId+GameObjectMarshaller.QUALIFIER_SEPARATOR+savedGameId:userId;
 			
 			PlayerStateBean data = (PlayerStateBean)load(PlayerStateBean.class, objId, false);
 			if (null != data) {

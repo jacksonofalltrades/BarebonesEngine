@@ -25,7 +25,7 @@ import utils.io.xml.XMLEncoder;
 import utils.io.xml.XMLProcessorFactory;
 
 public class WORegionMarshallerTest {
-	protected static final String ROOT_PATH = "/home/dej/svnroot/software/trunk/BarebonesEngine/barebones/io/test/";
+	protected static final String ROOT_PATH = "/home/dej/workspace/BarebonesEngine/barebones/io/test/";
 	protected static XMLEncoder encoder;
 	protected static XMLDecoder decoder;
 		

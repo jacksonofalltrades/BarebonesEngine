@@ -6,16 +6,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
+
+import barebones.io.dal.GameObjectMarshaller;
 import barebones.world.filter.PlayerStateFilter;
 
-public class PlayerStateBean extends WORootDataBean 
+public class PlayerStateBean extends RootDataBean 
 {
 	protected static final String DEFAULT_NEW_USER_PATH = "DefaultNewUser.xml";
 	protected static final String PLAYER_PATH = "games/";
 	
 	static {
-		ObjectMarshaller.registerBean(PlayerStateBean.class, new PlayerStateFilter(), PLAYER_PATH);
+		GameObjectMarshaller.registerBean(PlayerStateBean.class, new PlayerStateFilter(), PLAYER_PATH);
 	}
 	
 	public static boolean create(String rootPath, String id) {

@@ -6,7 +6,7 @@ import barebones.engine.GameEngineAccessor;
 import barebones.world.data.ObjectDetailBean;
 import barebones.world.object.ObjectDetail;
 
-public class ObjectDetailLoader extends ObjectMarshaller {
+public class ObjectDetailLoader extends GameObjectMarshaller {
 	public static final boolean DEBUG = false;
 	
 	protected static ObjectDetailLoader sm_odLoader;

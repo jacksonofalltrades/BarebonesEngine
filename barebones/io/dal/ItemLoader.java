@@ -10,7 +10,7 @@ import barebones.engine.GameEngineAccessor;
 import barebones.world.data.WORootItemBean;
 import barebones.world.object.Item;
 
-public class ItemLoader extends ObjectMarshaller implements FilenameFilter {
+public class ItemLoader extends GameObjectMarshaller implements FilenameFilter {
 	public static boolean DEBUG;
 	
 	/*
@@ -61,8 +61,8 @@ public class ItemLoader extends ObjectMarshaller implements FilenameFilter {
 	public HashSet<Item> loadAll(GameEngineAccessor engineRef) {
 		HashSet<Item> l_allItemSet = new HashSet<Item>();
 		
-		ObjectMarshaller.forceRegister(WORootItemBean.class);
-		String beanPath = ObjectMarshaller.getPath(WORootItemBean.class);
+		GameObjectMarshaller.forceRegister(WORootItemBean.class);
+		String beanPath = GameObjectMarshaller.getPath(WORootItemBean.class);
 		
 		String path = engineRef.getGameDataRootPath()+beanPath;
 		File f = new File(path);

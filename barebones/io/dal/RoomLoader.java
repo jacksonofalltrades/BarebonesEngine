@@ -17,7 +17,7 @@ import barebones.world.feature.RoomFeature;
 import barebones.world.filter.WORoomBlockFilter;
 import barebones.world.object.Room;
 
-public class RoomLoader extends ObjectMarshaller {
+public class RoomLoader extends GameObjectMarshaller {
 	protected static final String REGION_PATH = "regions/";
 	protected static final String ROOM2REG_ID = "room2reg";
 				

@@ -1,12 +1,13 @@
 package barebones.world.data;
 
-import barebones.io.dal.ObjectMarshaller;
+import utils.io.dal.RootDataBean;
+import barebones.io.dal.GameObjectMarshaller;
 
-public class GameConfigDataBean extends WORootDataBean {
+public class GameConfigDataBean extends RootDataBean {
 	
 	static {
 		// no filter, stored in game-root-dir (no subdir path, thus "")
-		ObjectMarshaller.registerBean(GameConfigDataBean.class, null, "");
+		GameObjectMarshaller.registerBean(GameConfigDataBean.class, null, "");
 	}
 	
 	public long secondsPerTick;

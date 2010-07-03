@@ -4,15 +4,16 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import utils.IntegerRange;
+import utils.io.dal.RootDataBean;
 
-import barebones.io.dal.ObjectMarshaller;
+import barebones.io.dal.GameObjectMarshaller;
 
-public class WORegionMapBean extends WORootDataBean 
+public class WORegionMapBean extends RootDataBean 
 {
 	protected static final String REGION_MAP_PATH = "regions/";
 
 	static {
-		ObjectMarshaller.registerBean(WORegionMapBean.class, null, REGION_MAP_PATH);
+		GameObjectMarshaller.registerBean(WORegionMapBean.class, null, REGION_MAP_PATH);
 	}
 	
 	public HashMap<String,String> roomToRegionMap;

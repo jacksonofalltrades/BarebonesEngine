@@ -3,9 +3,7 @@ package barebones.client.textlocal;
 import barebones.client.ClientConfig;
 
 public class TextLocalConfig implements ClientConfig 
-{
-	///protected static final String ROOT_PATH = "/home/dej/svnroot/software/trunk/BarebonesEngine/";
-	
+{	
 	protected static ClientConfig sm_config;
 	
 	protected String m_rootPath;
