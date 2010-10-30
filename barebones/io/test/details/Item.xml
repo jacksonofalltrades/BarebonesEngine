@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Item class="barebones.world.data.ObjectDetailBean">
     <id class="java.lang.String">Item</id>
-    <cmdKeyMap class="java.util.HashMap"/>
-    <containedItemSet class="java.util.HashSet"/>
-    <objKeyMap class="java.util.HashMap">
+    <cmdKeyMap class="java.util.Map"/>
+    <containedItemSet class="java.util.Set"/>
+    <objKeyMap class="java.util.Map">
         <map-item-val class="barebones.world.data.ResponseContentBean" key="item.recipnotpresent">
             <text class="java.lang.String">%s is not here.</text>
         </map-item-val>

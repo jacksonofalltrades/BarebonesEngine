@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <room1010 class="barebones.world.data.ObjectDetailBean">
     <id class="java.lang.String">room1010</id>
-    <cmdKeyMap class="java.util.HashMap"/>
-    <containedItemSet class="java.util.HashSet">
+    <cmdKeyMap class="java.util.Map"/>
+    <containedItemSet class="java.util.Set">
         <set-item-val class="java.lang.String">box</set-item-val>
     </containedItemSet>
-    <objKeyMap class="java.util.HashMap"/>
+    <objKeyMap class="java.util.Map"/>
 </room1010>

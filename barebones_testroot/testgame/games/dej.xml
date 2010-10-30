@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <dej class="barebones.world.data.PlayerStateBean">
     <id class="java.lang.String">dej</id>
-    <worldDeltas class="java.util.HashMap"/>
+    <worldDeltas class="java.util.Map"/>
     <data class="barebones.world.data.PlayerStateData">
         <currScore class="java.lang.Integer">100</currScore>
-        <inventory class="java.util.HashSet">
+        <inventory class="java.util.Set">
             <set-item-val class="java.lang.String">shield</set-item-val>
             <set-item-val class="java.lang.String">silverkey</set-item-val>
             <set-item-val class="java.lang.String">sword</set-item-val>

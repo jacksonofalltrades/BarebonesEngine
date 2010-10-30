@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <main class="barebones.world.data.WORegionBean">
     <id class="java.lang.String">main</id>
-    <rooms class="java.util.HashMap">
+    <rooms class="java.util.Map">
         <map-item-val class="barebones.world.data.WORoomBean" key="1020">
             <uid class="java.lang.Integer">-1</uid>
             <id class="java.lang.String">room1020</id>

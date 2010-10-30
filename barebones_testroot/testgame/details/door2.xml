@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <door2 class="barebones.world.data.ObjectDetailBean">
     <id class="java.lang.String">door2</id>
-    <cmdKeyMap class="java.util.HashMap">
+    <cmdKeyMap class="java.util.Map">
         <map-item-val class="barebones.world.data.ResponseContentBean" key="OPEN">
             <text class="java.lang.String">You rip the door %s off it's hinges in a fury.</text>
         </map-item-val>
@@ -9,8 +9,8 @@
             <text class="java.lang.String">There is %s ornately carved wooden door %s.</text>
         </map-item-val>
     </cmdKeyMap>
-    <containedItemSet class="java.util.HashSet"/>
-    <objKeyMap class="java.util.HashMap">
+    <containedItemSet class="java.util.Set"/>
+    <objKeyMap class="java.util.Map">
         <map-item-val class="barebones.world.data.ResponseContentBean" key="door.closedadj">
             <text class="java.lang.String">a sealed</text>
         </map-item-val>

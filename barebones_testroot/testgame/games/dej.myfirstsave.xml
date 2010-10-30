@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <dej class="barebones.world.data.PlayerStateBean">
     <id class="java.lang.String">dej</id>
-    <worldDeltas class="java.util.HashMap">
+    <worldDeltas class="java.util.Map">
         <map-item-val class="barebones.world.data.WORoomBean" key="room1002">
             <id class="java.lang.String">room1002</id>
-            <containedItemSet class="java.util.HashSet">
+            <containedItemSet class="java.util.Set">
                 <set-item-val class="java.lang.String">sword</set-item-val>
             </containedItemSet>
         </map-item-val>
     </worldDeltas>
     <data class="barebones.world.data.PlayerStateData">
         <currScore class="java.lang.Integer">100</currScore>
-        <inventory class="java.util.HashSet">
+        <inventory class="java.util.Set">
             <set-item-val class="java.lang.String">box</set-item-val>
             <set-item-val class="java.lang.String">silverkey</set-item-val>
             <set-item-val class="java.lang.String">shield</set-item-val>

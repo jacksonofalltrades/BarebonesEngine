@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <stoneroom class="barebones.world.data.ObjectDetailBean">
     <id class="java.lang.String">crags</id>
-    <cmdKeyMap class="java.util.HashMap">
+    <cmdKeyMap class="java.util.Map">
         <map-item-val class="barebones.world.data.ResponseContentBean" key="EXAM">
             <text class="java.lang.String">The high crags once were home to myriad Draconic races, but were destroyed by Hellion Ratgore.</text>
         </map-item-val>
     </cmdKeyMap>
-    <containedItemSet class="java.util.HashSet"/>
-    <objKeyMap class="java.util.HashMap"/>
+    <containedItemSet class="java.util.Set"/>
+    <objKeyMap class="java.util.Map"/>
 </stoneroom>

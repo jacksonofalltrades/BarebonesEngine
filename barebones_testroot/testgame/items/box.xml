@@ -10,7 +10,7 @@
         <equipped class="java.lang.Boolean">false</equipped>
         <getpts class="java.lang.Integer">0</getpts>
     </itemData>
-    <containedItemSet class="java.util.HashSet">
+    <containedItemSet class="java.util.Set">
         <set-item-val class="java.lang.String">silverkey</set-item-val>
     </containedItemSet>
 </box>

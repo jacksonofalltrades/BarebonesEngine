@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <DoorLock class="barebones.world.data.ObjectDetailBean">
     <id class="java.lang.String">DoorLock</id>
-    <cmdKeyMap class="java.util.HashMap"/>
-    <containedItemSet class="java.util.HashSet"/>
-    <objKeyMap class="java.util.HashMap">
+    <cmdKeyMap class="java.util.Map"/>
+    <containedItemSet class="java.util.Set"/>
+    <objKeyMap class="java.util.Map">
         <map-item-val class="barebones.world.data.ResponseContentBean" key="lock.lockedtxt">
             <text class="java.lang.String">You cannot open the door %s. It is locked.</text>
         </map-item-val>

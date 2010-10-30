@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <main-specials class="barebones.world.data.WORoomSpecialMapBean">
     <id class="java.lang.String">main-specials</id>
-    <roomSpecialMap class="java.util.HashMap">
+    <roomSpecialMap class="java.util.Map">
         <map-item-val class="java.util.Vector" key="1001">
             <vector-item-val class="barebones.world.data.WODoorBean">
                 <id class="java.lang.String">door2</id>
